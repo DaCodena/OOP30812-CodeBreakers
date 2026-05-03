@@ -1,8 +1,6 @@
-# \# Educative Software
+# Educative Software
 
-
-
-\## Authors:
+## Authors:
 
 Esteban Alexander Basurto Farias, Odalys Yajaira Chavez Jacome
 
