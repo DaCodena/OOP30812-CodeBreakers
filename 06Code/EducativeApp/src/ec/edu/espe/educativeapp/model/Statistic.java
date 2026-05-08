@@ -17,6 +17,23 @@ public class Statistic {
     private double participantRate;
     private Course courseInformation;
 
+    public Statistic(String statisticId, double averageGrade, double highestGrade, double lowestGrade, String difficultQuestions, double participantRate, Course courseInformation) {
+        this.statisticId = statisticId;
+        this.averageGrade = averageGrade;
+        this.highestGrade = highestGrade;
+        this.lowestGrade = lowestGrade;
+        this.difficultQuestions = difficultQuestions;
+        this.participantRate = participantRate;
+        this.courseInformation = courseInformation;
+    }
+
+    @Override
+    public String toString() {
+        return "Statistic{" + "statisticId=" + statisticId + ", averageGrade=" 
+            + averageGrade + ", highestGrade=" + highestGrade + ", lowestGrade=" 
+            + lowestGrade + ", difficultQuestions=" + difficultQuestions + ", participantRate=" 
+            + participantRate + ", courseInformation=" + courseInformation + '}';
+    }
     /**
      * @return the statisticId
      */
