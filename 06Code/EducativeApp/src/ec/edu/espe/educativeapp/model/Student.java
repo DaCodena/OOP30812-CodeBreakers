@@ -9,5 +9,5 @@ package ec.edu.espe.educativeapp.model;
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class Student {
-    
+           
 }
