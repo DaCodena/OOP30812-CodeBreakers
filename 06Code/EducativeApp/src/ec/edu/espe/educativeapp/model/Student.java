@@ -2,7 +2,7 @@ package ec.edu.espe.educativeapp.model;
 
 /**
  *
- * @author Esteban Basurto, CodeBreakers, @ESPE
+ * @author Odalys Chavez, CodeBreakers, @ESPE
  */
 public class Student {
     
