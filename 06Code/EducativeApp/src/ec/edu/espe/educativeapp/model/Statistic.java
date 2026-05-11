@@ -33,7 +33,7 @@ public class Statistic {
             + averageGrade + ", highestGrade=" + highestGrade + ", lowestGrade=" 
             + lowestGrade + ", difficultQuestions=" + difficultQuestions + ", participantRate=" 
             + participantRate + ", courseInformation=" + courseInformation + '}';
-    }
+    } 
     /**
      * @return the statisticId
      */
