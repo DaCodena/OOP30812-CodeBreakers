@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class Material {
     private String title;
