@@ -8,76 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- *
- * @author Daniel Codena, CodeBreakers, @ESPE
- */
+
 public class FileManager {
 
-    // =========================
-    // SAVE STUDENTS TO CSV
-    // =========================
-    public void saveStudentsCSV(ArrayList<Student> students, String fileName) {
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-
-            for (Student student : students) {
-
-                writer.write(
-                    student.getId() + "," +
-                    student.getName() + "," +
-                    student.getAverage()
-                );
-
-                writer.newLine();
-            }
-
-            System.out.println("Students saved in CSV successfully.");
-
-        } catch (IOException e) {
-
-            System.out.println("Error saving CSV file.");
-        }
-    }
-
-    // =========================
-    // LOAD STUDENTS FROM CSV
-    // =========================
-    public ArrayList<Student> loadStudentsCSV(String fileName) {
-
-        ArrayList<Student> students = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-
-                String[] data = line.split(",");
-
-                int id = Integer.parseInt(data[0]);
-                String name = data[1];
-                double average = Double.parseDouble(data[2]);
-
-                Student student = new Student(id, name, 0);
-                student.setAverage(average);
-
-                students.add(student);
-            }
-
-            System.out.println("Students loaded from CSV.");
-
-        } catch (IOException e) {
-
-            System.out.println("Error loading CSV file.");
-        }
-
-        return students;
-    }
-
-    // =========================
-    // SAVE STUDENTS TO JSON
-    // =========================
     public void saveStudentsJSON(ArrayList<Student> students, String fileName) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -110,4 +43,63 @@ public class FileManager {
             System.out.println("Error saving JSON file.");
         }
     }
+    
+    
+    public ArrayList<Student> loadStudentsJSON(String fileName) {
+
+    ArrayList<Student> students = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+        String line;
+
+        int id = 0;
+        String name = "";
+        double average = 0;
+
+        while ((line = reader.readLine()) != null) {
+
+            line = line.trim();
+
+            if (line.startsWith("\"id\"")) {
+
+                String value = line.split(":")[1]
+                                   .replace(",", "")
+                                   .trim();
+
+                id = Integer.parseInt(value);
+            }
+
+            if (line.startsWith("\"name\"")) {
+
+                String value = line.split(":")[1]
+                                   .replace(",", "")
+                                   .replace("\"", "")
+                                   .trim();
+
+                name = value;
+            }
+
+            if (line.startsWith("\"average\"")) {
+
+                String value = line.split(":")[1]
+                                   .trim();
+
+                average = Double.parseDouble(value);
+
+                Student student = new Student(id, name, average);
+
+                students.add(student);
+            }
+        }
+
+        System.out.println("Students loaded from JSON successfully.");
+
+    } catch (IOException e) {
+
+        System.out.println("Error loading JSON file.");
+    }
+
+    return students;
+}
 }

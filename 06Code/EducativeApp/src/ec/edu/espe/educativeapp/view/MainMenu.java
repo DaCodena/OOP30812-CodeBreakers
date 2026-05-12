@@ -20,13 +20,15 @@ public class MainMenu {
             System.out.println("===== EDUCATIVE APP =====");
             System.out.println("1. Add Student");
             System.out.println("2. Show Students");
-            System.out.println("3. Exit");
+            System.out.println("3. Save Students JSON");
+            System.out.println("4. Load Students JSON");
+            System.out.println("5. Exit");
             System.out.print("Choose an option: ");
 
             option = scanner.nextInt();
             scanner.nextLine();
 
-            switch(option) {
+            switch (option) {
                 case 1:
                     System.out.print("Enter ID: ");
                     int id = scanner.nextInt();
@@ -34,7 +36,7 @@ public class MainMenu {
 
                     System.out.print("Enter Name: ");
                     String name = scanner.nextLine();
-                    
+
                     System.out.print("Enter Average: ");
                     int average = scanner.nextInt();
                     scanner.nextLine();
@@ -45,8 +47,19 @@ public class MainMenu {
                 case 2:
                     studentController.showStudents();
                     break;
+                    
+                case 3:
+                    studentController.saveStudentsJSON();
+                    break;
+
+                case 4:
+                    studentController.loadStudentsJSON();
+                    break;
+                    
+                default:
+                    System.out.println("Invalid option");
             }
 
-        } while(option != 3);
+        } while (option != 5);
     }
 }
