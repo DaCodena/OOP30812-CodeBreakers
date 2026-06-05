@@ -4,7 +4,7 @@
 
 package ec.edu.espe.educativesoftware;
 
-import ec.edu.espe.educativesoftware.view.IScreen;
+import ec.edu.espe.educativesoftware.view.FrmAdminDashboard;
 
 /**
  *
@@ -13,7 +13,7 @@ import ec.edu.espe.educativesoftware.view.IScreen;
 public class EducativeSoftware {
 
     public static void main(String[] args) {
-        IScreen screen = new IScreen();
+        FrmAdminDashboard screen = new FrmAdminDashboard();
         
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);

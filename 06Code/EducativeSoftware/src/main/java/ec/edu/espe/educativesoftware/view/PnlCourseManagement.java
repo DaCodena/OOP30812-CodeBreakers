@@ -4,10 +4,6 @@
  */
 package ec.edu.espe.educativesoftware.view;
 
-/**
- *
- * @author Daniel Codena, CodeBreakers, @ESPE
- */
 public class PnlCourseManagement extends javax.swing.JPanel {
 
     /**
@@ -26,30 +22,396 @@ public class PnlCourseManagement extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pnlCreateCourse = new javax.swing.JPanel();
+        pnlHeaderCreateCourse = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        pnlBodyCreateCourse = new javax.swing.JPanel();
+        pnlFormCreateCourse = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtCourseDescription = new javax.swing.JTextArea();
+        cmbTeacher = new javax.swing.JComboBox<>();
+        txtSubject = new javax.swing.JTextField();
+        txtCourseName = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        pnlTableCreateCourses = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCreateCourses = new javax.swing.JTable();
+        pnlFooterCreateCourse = new javax.swing.JPanel();
+        btnSaveCourse = new javax.swing.JButton();
+        btnCleanCourseInformation = new javax.swing.JButton();
+        btnCancelCreateCourse = new javax.swing.JButton();
+        pnlConsultCourse = new javax.swing.JPanel();
+        pnlHeaderConsultCourse = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        pnlBodyConsultCourse = new javax.swing.JPanel();
+        pnlFormConsultCourse = new javax.swing.JPanel();
+        txtSearchCourseName = new javax.swing.JTextField();
+        txtSearchSubject = new javax.swing.JTextField();
+        cmbSearchTeacher = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btnSearchCourse = new javax.swing.JButton();
+        btnSearchCourse1 = new javax.swing.JButton();
+        pnlTableConsultCourses1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblConsultCourses1 = new javax.swing.JTable();
+        pnlEditCourse = new javax.swing.JPanel();
+        pnlDeleteCourse = new javax.swing.JPanel();
 
-        jLabel1.setText("Gestionar cursos");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Añadir Cursos");
+        jLabel1.setVerifyInputWhenFocusTarget(false);
+        pnlHeaderCreateCourse.add(jLabel1);
+
+        txtCourseDescription.setColumns(20);
+        txtCourseDescription.setRows(5);
+        jScrollPane1.setViewportView(txtCourseDescription);
+
+        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel2.setText("id:");
+
+        jLabel3.setText("Nombre:");
+
+        jLabel4.setText("Asignatura:");
+
+        jLabel5.setText("Docente:");
+
+        jLabel6.setText("Descripción:");
+
+        javax.swing.GroupLayout pnlFormCreateCourseLayout = new javax.swing.GroupLayout(pnlFormCreateCourse);
+        pnlFormCreateCourse.setLayout(pnlFormCreateCourseLayout);
+        pnlFormCreateCourseLayout.setHorizontalGroup(
+            pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormCreateCourseLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
+        );
+        pnlFormCreateCourseLayout.setVerticalGroup(
+            pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormCreateCourseLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(22, 22, 22)
+                .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        pnlBodyCreateCourse.add(pnlFormCreateCourse);
+
+        tblCreateCourses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Asignatura", "Docente"
+            }
+        ));
+        jScrollPane2.setViewportView(tblCreateCourses);
+
+        javax.swing.GroupLayout pnlTableCreateCoursesLayout = new javax.swing.GroupLayout(pnlTableCreateCourses);
+        pnlTableCreateCourses.setLayout(pnlTableCreateCoursesLayout);
+        pnlTableCreateCoursesLayout.setHorizontalGroup(
+            pnlTableCreateCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableCreateCoursesLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+        pnlTableCreateCoursesLayout.setVerticalGroup(
+            pnlTableCreateCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableCreateCoursesLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlBodyCreateCourse.add(pnlTableCreateCourses);
+
+        pnlFooterCreateCourse.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 40, 5));
+
+        btnSaveCourse.setText("Guardar");
+        pnlFooterCreateCourse.add(btnSaveCourse);
+
+        btnCleanCourseInformation.setText("Limpiar");
+        pnlFooterCreateCourse.add(btnCleanCourseInformation);
+
+        btnCancelCreateCourse.setText("Cancelar");
+        pnlFooterCreateCourse.add(btnCancelCreateCourse);
+
+        javax.swing.GroupLayout pnlCreateCourseLayout = new javax.swing.GroupLayout(pnlCreateCourse);
+        pnlCreateCourse.setLayout(pnlCreateCourseLayout);
+        pnlCreateCourseLayout.setHorizontalGroup(
+            pnlCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHeaderCreateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBodyCreateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlFooterCreateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlCreateCourseLayout.setVerticalGroup(
+            pnlCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCreateCourseLayout.createSequentialGroup()
+                .addComponent(pnlHeaderCreateCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBodyCreateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlFooterCreateCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Crear", pnlCreateCourse);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("Consultar Cursos");
+        jLabel7.setVerifyInputWhenFocusTarget(false);
+        pnlHeaderConsultCourse.add(jLabel7);
+
+        cmbSearchTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setText("Nombre:");
+
+        jLabel9.setText("Asignatura:");
+
+        jLabel10.setText("Docente:");
+
+        btnSearchCourse.setText("Buscar");
+
+        btnSearchCourse1.setText("Limpiar");
+
+        javax.swing.GroupLayout pnlFormConsultCourseLayout = new javax.swing.GroupLayout(pnlFormConsultCourse);
+        pnlFormConsultCourse.setLayout(pnlFormConsultCourseLayout);
+        pnlFormConsultCourseLayout.setHorizontalGroup(
+            pnlFormConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormConsultCourseLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(pnlFormConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addGroup(pnlFormConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnlFormConsultCourseLayout.createSequentialGroup()
+                            .addComponent(btnSearchCourse)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                            .addComponent(btnSearchCourse1))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtSearchCourseName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchSubject, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cmbSearchTeacher, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        pnlFormConsultCourseLayout.setVerticalGroup(
+            pnlFormConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormConsultCourseLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSearchCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSearchSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbSearchTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(pnlFormConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearchCourse)
+                    .addComponent(btnSearchCourse1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlBodyConsultCourse.add(pnlFormConsultCourse);
+
+        tblConsultCourses1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Asignatura", "Docente"
+            }
+        ));
+        jScrollPane3.setViewportView(tblConsultCourses1);
+
+        javax.swing.GroupLayout pnlTableConsultCourses1Layout = new javax.swing.GroupLayout(pnlTableConsultCourses1);
+        pnlTableConsultCourses1.setLayout(pnlTableConsultCourses1Layout);
+        pnlTableConsultCourses1Layout.setHorizontalGroup(
+            pnlTableConsultCourses1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableConsultCourses1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+        pnlTableConsultCourses1Layout.setVerticalGroup(
+            pnlTableConsultCourses1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableConsultCourses1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        pnlBodyConsultCourse.add(pnlTableConsultCourses1);
+
+        javax.swing.GroupLayout pnlConsultCourseLayout = new javax.swing.GroupLayout(pnlConsultCourse);
+        pnlConsultCourse.setLayout(pnlConsultCourseLayout);
+        pnlConsultCourseLayout.setHorizontalGroup(
+            pnlConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHeaderConsultCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBodyConsultCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlConsultCourseLayout.setVerticalGroup(
+            pnlConsultCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlConsultCourseLayout.createSequentialGroup()
+                .addComponent(pnlHeaderConsultCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBodyConsultCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Consultar", pnlConsultCourse);
+
+        javax.swing.GroupLayout pnlEditCourseLayout = new javax.swing.GroupLayout(pnlEditCourse);
+        pnlEditCourse.setLayout(pnlEditCourseLayout);
+        pnlEditCourseLayout.setHorizontalGroup(
+            pnlEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 971, Short.MAX_VALUE)
+        );
+        pnlEditCourseLayout.setVerticalGroup(
+            pnlEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Editar", pnlEditCourse);
+
+        javax.swing.GroupLayout pnlDeleteCourseLayout = new javax.swing.GroupLayout(pnlDeleteCourse);
+        pnlDeleteCourse.setLayout(pnlDeleteCourseLayout);
+        pnlDeleteCourseLayout.setHorizontalGroup(
+            pnlDeleteCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 971, Short.MAX_VALUE)
+        );
+        pnlDeleteCourseLayout.setVerticalGroup(
+            pnlDeleteCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Eliminar", pnlDeleteCourse);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(jLabel1)
-                .addContainerGap(166, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel1)
-                .addContainerGap(173, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelCreateCourse;
+    private javax.swing.JButton btnCleanCourseInformation;
+    private javax.swing.JButton btnSaveCourse;
+    private javax.swing.JButton btnSearchCourse;
+    private javax.swing.JButton btnSearchCourse1;
+    private javax.swing.JComboBox<String> cmbSearchTeacher;
+    private javax.swing.JComboBox<String> cmbTeacher;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel pnlBodyConsultCourse;
+    private javax.swing.JPanel pnlBodyCreateCourse;
+    private javax.swing.JPanel pnlConsultCourse;
+    private javax.swing.JPanel pnlCreateCourse;
+    private javax.swing.JPanel pnlDeleteCourse;
+    private javax.swing.JPanel pnlEditCourse;
+    private javax.swing.JPanel pnlFooterCreateCourse;
+    private javax.swing.JPanel pnlFormConsultCourse;
+    private javax.swing.JPanel pnlFormCreateCourse;
+    private javax.swing.JPanel pnlHeaderConsultCourse;
+    private javax.swing.JPanel pnlHeaderCreateCourse;
+    private javax.swing.JPanel pnlTableConsultCourses1;
+    private javax.swing.JPanel pnlTableCreateCourses;
+    private javax.swing.JTable tblConsultCourses1;
+    private javax.swing.JTable tblCreateCourses;
+    private javax.swing.JTextArea txtCourseDescription;
+    private javax.swing.JTextField txtCourseName;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtSearchCourseName;
+    private javax.swing.JTextField txtSearchSubject;
+    private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,16 +10,16 @@ import java.awt.CardLayout;
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
-public class IScreen extends javax.swing.JFrame {
+public class FrmAdminDashboard extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(IScreen.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAdminDashboard.class.getName());
 
     private CardLayout cardLayout;
 
     /**
      * Creates new form IScreen
      */
-    public IScreen() {
+    public FrmAdminDashboard() {
         initComponents();
 
         cardLayout = (CardLayout) mainPanel.getLayout();
@@ -353,7 +353,7 @@ public class IScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new IScreen().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmAdminDashboard().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
