@@ -15,19 +15,12 @@ import java.util.List;
 public class Course {
 
     private String courseId;
-
     private String name;
-
     private String subject;
-
     private String description;
-
-    private Teacher teacher;
-
+    private String teacher;
     private List<Student> students;
-
     private List<Activity> activities;
-
     private List<Material> materials;
 
     @Override
@@ -46,7 +39,7 @@ public class Course {
             String name,
             String subject,
             String description,
-            Teacher teacher) {
+            String teacher) {
 
         this.courseId = courseId;
         this.name = name;
@@ -91,11 +84,11 @@ public class Course {
         this.description = description;
     }
 
-    public Teacher getTeacher() {
+    public String getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
 

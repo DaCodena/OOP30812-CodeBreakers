@@ -4,6 +4,14 @@
  */
 package ec.edu.espe.educativesoftware.view;
 
+import ec.edu.espe.educativesoftware.controller.CourseController;
+import ec.edu.espe.educativesoftware.model.Course;
+
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class PnlCourseManagement extends javax.swing.JPanel {
 
     /**
@@ -11,6 +19,115 @@ public class PnlCourseManagement extends javax.swing.JPanel {
      */
     public PnlCourseManagement() {
         initComponents();
+
+        loadCourses();
+    }
+
+    public PnlCourseManagement(int selectedTab) {
+
+        initComponents();
+
+        tabCourseManagement.setSelectedIndex(
+                selectedTab);
+
+        loadCourses();
+    }
+
+    private void fillTable(
+            JTable table,
+            List<Course> courses) {
+
+        DefaultTableModel model
+                = (DefaultTableModel) table.getModel();
+
+        model.setRowCount(0);
+
+        for (Course course : courses) {
+
+            model.addRow(new Object[]{
+                course.getCourseId(),
+                course.getName(),
+                course.getSubject(),
+                course.getTeacher()
+            });
+        }
+    }
+
+    private void loadCourses() {
+
+        CourseController controller
+                = new CourseController();
+
+        List<Course> courses
+                = controller.getAllCourses();
+
+        fillTable(tblCreateCourses, courses);
+
+        fillTable(tblSearchCourses, courses);
+
+        fillTable(tblEditCourses, courses);
+
+        fillTable(tblDeleteCourses, courses);
+    }
+
+    private void clearForm() {
+
+        txtCourseId.setText("");
+
+        txtCourseName.setText("");
+
+        txtSubject.setText("");
+
+        txtCourseDescription.setText("");
+
+        cmbTeacher.setSelectedIndex(0);
+    }
+
+    private void clearEditForm() {
+
+        txtEditCourseId.setText("");
+        txtEditName.setText("");
+        txtEditSubject.setText("");
+        txtEditDescription.setText("");
+
+        cmbEditTeacher.setSelectedIndex(0);
+    }
+
+    private void clearDeleteLabels() {
+
+        lblDeleteId.setText("-");
+
+        lblDeleteName.setText("-");
+
+        lblDeleteSubject.setText("-");
+
+        lblDeleteTeacher.setText("-");
+
+        lblDeleteDescription.setText("-");
+    }
+
+    private void fillSearchTable(
+            List<Course> courses) {
+
+        DefaultTableModel model
+                = (DefaultTableModel) tblSearchCourses.getModel();
+
+        model.setRowCount(0);
+
+        for (Course course : courses) {
+
+            model.addRow(new Object[]{
+                course.getCourseId(),
+                course.getName(),
+                course.getSubject(),
+                course.getTeacher()
+            });
+        }
+    }
+
+    public void showTab(int index) {
+
+        tabCourseManagement.setSelectedIndex(index);
     }
 
     /**
@@ -22,7 +139,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabCourseManagement = new javax.swing.JTabbedPane();
         pnlCreateCourse = new javax.swing.JPanel();
         pnlHeaderCreateCourse = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -33,7 +150,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         cmbTeacher = new javax.swing.JComboBox<>();
         txtSubject = new javax.swing.JTextField();
         txtCourseName = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
+        txtCourseId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,7 +161,6 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         tblCreateCourses = new javax.swing.JTable();
         pnlFooterCreateCourse = new javax.swing.JPanel();
         btnSaveCourse = new javax.swing.JButton();
-        btnCleanCourseInformation = new javax.swing.JButton();
         btnCancelCreateCourse = new javax.swing.JButton();
         pnlConsultCourse = new javax.swing.JPanel();
         pnlHeaderConsultCourse = new javax.swing.JPanel();
@@ -61,9 +177,50 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         btnSearchCourse1 = new javax.swing.JButton();
         pnlTableConsultCourses1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblConsultCourses1 = new javax.swing.JTable();
+        tblSearchCourses = new javax.swing.JTable();
         pnlEditCourse = new javax.swing.JPanel();
+        pnlHeaderEditCourse = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        pnlBodyEditCourse = new javax.swing.JPanel();
+        pnlTableEditCourses = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblEditCourses = new javax.swing.JTable();
+        pnlFormEditCourse = new javax.swing.JPanel();
+        txtEditName = new javax.swing.JTextField();
+        txtEditSubject = new javax.swing.JTextField();
+        cmbEditTeacher = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        btnUpdateCourse = new javax.swing.JButton();
+        btnSearchCourse3 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        scrEditText = new javax.swing.JScrollPane();
+        txtEditDescription = new javax.swing.JTextArea();
+        jLabel17 = new javax.swing.JLabel();
+        txtEditCourseId = new javax.swing.JTextField();
         pnlDeleteCourse = new javax.swing.JPanel();
+        pnlHeaderDeleteCourse1 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        pnlBodyDeleteCourse1 = new javax.swing.JPanel();
+        pnlTableEditCourses1 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblDeleteCourses = new javax.swing.JTable();
+        pnlFormEditCourse1 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        btnDeleteCourse = new javax.swing.JButton();
+        btnSearchCourse5 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        lblDeleteId = new javax.swing.JLabel();
+        lblDeleteName = new javax.swing.JLabel();
+        lblDeleteSubject = new javax.swing.JLabel();
+        lblDeleteTeacher = new javax.swing.JLabel();
+        lblDeleteDescription = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -75,7 +232,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         txtCourseDescription.setRows(5);
         jScrollPane1.setViewportView(txtCourseDescription);
 
-        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Ricardo Perez", "Maria Andrade", "Juan Salazar", "Dayana Fuentes" }));
 
         jLabel2.setText("id:");
 
@@ -102,7 +259,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -113,7 +270,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
             .addGroup(pnlFormCreateCourseLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(pnlFormCreateCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -181,12 +338,11 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         pnlFooterCreateCourse.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 40, 5));
 
         btnSaveCourse.setText("Guardar");
+        btnSaveCourse.addActionListener(this::btnSaveCourseActionPerformed);
         pnlFooterCreateCourse.add(btnSaveCourse);
 
-        btnCleanCourseInformation.setText("Limpiar");
-        pnlFooterCreateCourse.add(btnCleanCourseInformation);
-
         btnCancelCreateCourse.setText("Cancelar");
+        btnCancelCreateCourse.addActionListener(this::btnCancelCreateCourseActionPerformed);
         pnlFooterCreateCourse.add(btnCancelCreateCourse);
 
         javax.swing.GroupLayout pnlCreateCourseLayout = new javax.swing.GroupLayout(pnlCreateCourse);
@@ -208,7 +364,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Crear", pnlCreateCourse);
+        tabCourseManagement.addTab("Crear", pnlCreateCourse);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -216,7 +372,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         jLabel7.setVerifyInputWhenFocusTarget(false);
         pnlHeaderConsultCourse.add(jLabel7);
 
-        cmbSearchTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSearchTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Ricardo Perez", "Maria Andrade", "Juan Salazar", "Dayana Fuentes" }));
 
         jLabel8.setText("Nombre:");
 
@@ -225,8 +381,10 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         jLabel10.setText("Docente:");
 
         btnSearchCourse.setText("Buscar");
+        btnSearchCourse.addActionListener(this::btnSearchCourseActionPerformed);
 
         btnSearchCourse1.setText("Limpiar");
+        btnSearchCourse1.addActionListener(this::btnSearchCourse1ActionPerformed);
 
         javax.swing.GroupLayout pnlFormConsultCourseLayout = new javax.swing.GroupLayout(pnlFormConsultCourse);
         pnlFormConsultCourse.setLayout(pnlFormConsultCourseLayout);
@@ -272,7 +430,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
 
         pnlBodyConsultCourse.add(pnlFormConsultCourse);
 
-        tblConsultCourses1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSearchCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -293,7 +451,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
                 "ID", "Nombre", "Asignatura", "Docente"
             }
         ));
-        jScrollPane3.setViewportView(tblConsultCourses1);
+        jScrollPane3.setViewportView(tblSearchCourses);
 
         javax.swing.GroupLayout pnlTableConsultCourses1Layout = new javax.swing.GroupLayout(pnlTableConsultCourses1);
         pnlTableConsultCourses1.setLayout(pnlTableConsultCourses1Layout);
@@ -329,58 +487,619 @@ public class PnlCourseManagement extends javax.swing.JPanel {
                 .addComponent(pnlBodyConsultCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consultar", pnlConsultCourse);
+        tabCourseManagement.addTab("Consultar", pnlConsultCourse);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Editar Cursos");
+        jLabel11.setVerifyInputWhenFocusTarget(false);
+        pnlHeaderEditCourse.add(jLabel11);
+
+        tblEditCourses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Asignatura", "Docente"
+            }
+        ));
+        tblEditCourses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEditCoursesMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblEditCourses);
+
+        javax.swing.GroupLayout pnlTableEditCoursesLayout = new javax.swing.GroupLayout(pnlTableEditCourses);
+        pnlTableEditCourses.setLayout(pnlTableEditCoursesLayout);
+        pnlTableEditCoursesLayout.setHorizontalGroup(
+            pnlTableEditCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableEditCoursesLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+        pnlTableEditCoursesLayout.setVerticalGroup(
+            pnlTableEditCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableEditCoursesLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        pnlBodyEditCourse.add(pnlTableEditCourses);
+
+        cmbEditTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Ricardo Perez", "Maria Andrade", "Juan Salazar", "Dayana Fuentes" }));
+
+        jLabel12.setText("Nombre:");
+
+        jLabel13.setText("Asignatura:");
+
+        jLabel14.setText("Docente:");
+
+        btnUpdateCourse.setText("Actualizar");
+        btnUpdateCourse.addActionListener(this::btnUpdateCourseActionPerformed);
+
+        btnSearchCourse3.setText("Cancelar");
+
+        jLabel15.setText("ID:");
+
+        jLabel16.setText("Descripción:");
+
+        txtEditDescription.setColumns(20);
+        txtEditDescription.setRows(5);
+        scrEditText.setViewportView(txtEditDescription);
+
+        jLabel17.setText("Seleccione un curso de la tabla");
+
+        javax.swing.GroupLayout pnlFormEditCourseLayout = new javax.swing.GroupLayout(pnlFormEditCourse);
+        pnlFormEditCourse.setLayout(pnlFormEditCourseLayout);
+        pnlFormEditCourseLayout.setHorizontalGroup(
+            pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormEditCourseLayout.createSequentialGroup()
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlFormEditCourseLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addGroup(pnlFormEditCourseLayout.createSequentialGroup()
+                                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(scrEditText, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtEditCourseId, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cmbEditTeacher, javax.swing.GroupLayout.Alignment.LEADING, 0, 276, Short.MAX_VALUE)
+                                        .addComponent(txtEditSubject, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtEditName, javax.swing.GroupLayout.Alignment.LEADING))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFormEditCourseLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(btnUpdateCourse)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnSearchCourse3)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        pnlFormEditCourseLayout.setVerticalGroup(
+            pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormEditCourseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtEditCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(15, 15, 15)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEditSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(15, 15, 15)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbEditTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(scrEditText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(pnlFormEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearchCourse3)
+                    .addComponent(btnUpdateCourse))
+                .addGap(29, 29, 29))
+        );
+
+        pnlBodyEditCourse.add(pnlFormEditCourse);
 
         javax.swing.GroupLayout pnlEditCourseLayout = new javax.swing.GroupLayout(pnlEditCourse);
         pnlEditCourse.setLayout(pnlEditCourseLayout);
         pnlEditCourseLayout.setHorizontalGroup(
             pnlEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 971, Short.MAX_VALUE)
+            .addComponent(pnlHeaderEditCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
+            .addComponent(pnlBodyEditCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlEditCourseLayout.setVerticalGroup(
             pnlEditCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(pnlEditCourseLayout.createSequentialGroup()
+                .addComponent(pnlHeaderEditCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBodyEditCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Editar", pnlEditCourse);
+        tabCourseManagement.addTab("Editar", pnlEditCourse);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("Eliminar Cursos");
+        jLabel19.setVerifyInputWhenFocusTarget(false);
+        pnlHeaderDeleteCourse1.add(jLabel19);
+
+        tblDeleteCourses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Asignatura", "Docente"
+            }
+        ));
+        tblDeleteCourses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDeleteCoursesMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tblDeleteCourses);
+
+        javax.swing.GroupLayout pnlTableEditCourses1Layout = new javax.swing.GroupLayout(pnlTableEditCourses1);
+        pnlTableEditCourses1.setLayout(pnlTableEditCourses1Layout);
+        pnlTableEditCourses1Layout.setHorizontalGroup(
+            pnlTableEditCourses1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableEditCourses1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+        pnlTableEditCourses1Layout.setVerticalGroup(
+            pnlTableEditCourses1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTableEditCourses1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        pnlBodyDeleteCourse1.add(pnlTableEditCourses1);
+
+        jLabel20.setText("Nombre:");
+
+        jLabel21.setText("Asignatura:");
+
+        jLabel22.setText("Docente:");
+
+        btnDeleteCourse.setText("Eliminar");
+        btnDeleteCourse.addActionListener(this::btnDeleteCourseActionPerformed);
+
+        btnSearchCourse5.setText("Cancelar");
+        btnSearchCourse5.addActionListener(this::btnSearchCourse5ActionPerformed);
+
+        jLabel23.setText("ID:");
+
+        jLabel24.setText("Descripción:");
+
+        jLabel25.setText("Seleccione un curso de la tabla");
+
+        lblDeleteId.setText("-");
+
+        lblDeleteName.setText("-");
+
+        lblDeleteSubject.setText("-");
+
+        lblDeleteTeacher.setText("-");
+
+        lblDeleteDescription.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDeleteDescription.setText("-");
+
+        javax.swing.GroupLayout pnlFormEditCourse1Layout = new javax.swing.GroupLayout(pnlFormEditCourse1);
+        pnlFormEditCourse1.setLayout(pnlFormEditCourse1Layout);
+        pnlFormEditCourse1Layout.setHorizontalGroup(
+            pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormEditCourse1Layout.createSequentialGroup()
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlFormEditCourse1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addGroup(pnlFormEditCourse1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDeleteId, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                                    .addComponent(lblDeleteName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDeleteSubject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDeleteTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDeleteDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(210, 210, 210))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFormEditCourse1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(btnDeleteCourse)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnSearchCourse5)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        pnlFormEditCourse1Layout.setVerticalGroup(
+            pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormEditCourse1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(lblDeleteId))
+                .addGap(22, 22, 22)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(lblDeleteName))
+                .addGap(21, 21, 21)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(lblDeleteSubject))
+                .addGap(21, 21, 21)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(lblDeleteTeacher))
+                .addGap(18, 18, 18)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(lblDeleteDescription))
+                .addGap(93, 93, 93)
+                .addGroup(pnlFormEditCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearchCourse5)
+                    .addComponent(btnDeleteCourse))
+                .addGap(29, 29, 29))
+        );
+
+        pnlBodyDeleteCourse1.add(pnlFormEditCourse1);
 
         javax.swing.GroupLayout pnlDeleteCourseLayout = new javax.swing.GroupLayout(pnlDeleteCourse);
         pnlDeleteCourse.setLayout(pnlDeleteCourseLayout);
         pnlDeleteCourseLayout.setHorizontalGroup(
             pnlDeleteCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 971, Short.MAX_VALUE)
+            .addComponent(pnlHeaderDeleteCourse1, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
+            .addGroup(pnlDeleteCourseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlBodyDeleteCourse1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlDeleteCourseLayout.setVerticalGroup(
             pnlDeleteCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(pnlDeleteCourseLayout.createSequentialGroup()
+                .addComponent(pnlHeaderDeleteCourse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlBodyDeleteCourse1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Eliminar", pnlDeleteCourse);
+        tabCourseManagement.addTab("Eliminar", pnlDeleteCourse);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabCourseManagement)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabCourseManagement)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblEditCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEditCoursesMouseClicked
+        int row
+                = tblEditCourses.getSelectedRow();
+
+        txtEditCourseId.setText(
+                tblEditCourses.getValueAt(
+                        row, 0).toString());
+
+        txtEditName.setText(
+                tblEditCourses.getValueAt(
+                        row, 1).toString());
+
+        txtEditSubject.setText(
+                tblEditCourses.getValueAt(
+                        row, 2).toString());
+
+        cmbEditTeacher.setSelectedItem(
+                tblEditCourses.getValueAt(
+                        row, 3).toString());
+
+        String courseId
+                = txtEditCourseId.getText();
+
+        CourseController controller
+                = new CourseController();
+
+        Course course
+                = controller.findById(courseId);
+
+        if (course != null) {
+
+            txtEditDescription.setText(
+                    course.getDescription());
+        }
+    }//GEN-LAST:event_tblEditCoursesMouseClicked
+
+    private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
+        if (cmbEditTeacher.getSelectedItem().toString().equals("-")) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Please select a teacher");
+
+            return;
+        }
+
+        Course course
+                = new Course();
+
+        course.setCourseId(
+                txtEditCourseId.getText());
+
+        course.setName(
+                txtEditName.getText());
+
+        course.setSubject(
+                txtEditSubject.getText());
+
+        course.setDescription(
+                txtEditDescription.getText());
+
+        course.setTeacher(
+                cmbEditTeacher
+                        .getSelectedItem()
+                        .toString());
+
+        if (course.getCourseId().trim().isEmpty()
+                || course.getName().trim().isEmpty()
+                || course.getSubject().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Complete all required fields");
+
+            return;
+        }
+
+        CourseController controller
+                = new CourseController();
+
+        controller.updateCourse(course);
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Course updated successfully");
+
+        loadCourses();
+
+        clearEditForm();
+    }//GEN-LAST:event_btnUpdateCourseActionPerformed
+
+    private void tblDeleteCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDeleteCoursesMouseClicked
+        int row
+                = tblDeleteCourses.getSelectedRow();
+
+        String courseId
+                = tblDeleteCourses.getValueAt(
+                        row,
+                        0).toString();
+
+        CourseController controller
+                = new CourseController();
+
+        Course course
+                = controller.findById(courseId);
+
+        if (course != null) {
+
+            lblDeleteId.setText(
+                    course.getCourseId());
+
+            lblDeleteName.setText(
+                    course.getName());
+
+            lblDeleteSubject.setText(
+                    course.getSubject());
+
+            lblDeleteTeacher.setText(
+                    course.getTeacher());
+
+            lblDeleteDescription.setText(
+                    course.getDescription());
+        }
+    }//GEN-LAST:event_tblDeleteCoursesMouseClicked
+
+    private void btnDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCourseActionPerformed
+        String courseId
+                = lblDeleteId.getText();
+
+        if (courseId.equals("-")
+                || courseId.isEmpty()) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Select a course first");
+
+            return;
+        }
+
+        int option
+                = JOptionPane.showConfirmDialog(
+                        this,
+                        "¿Desea eliminar este curso? Esta acción es permanente",
+                        "Eliminar curso",
+                        JOptionPane.YES_NO_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
+
+            CourseController controller
+                    = new CourseController();
+
+            controller.deleteCourse(courseId);
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Course deleted successfully");
+
+            clearDeleteLabels();
+
+            loadCourses();
+        }
+    }//GEN-LAST:event_btnDeleteCourseActionPerformed
+
+    private void btnSaveCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCourseActionPerformed
+
+        if (cmbTeacher.getSelectedItem().toString().equals("-")) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Please select a teacher");
+
+            return;
+        }
+
+        Course course = new Course(
+                txtCourseId.getText(),
+                txtCourseName.getText(),
+                txtSubject.getText(),
+                txtCourseDescription.getText(),
+                cmbTeacher.getSelectedItem().toString()
+        );
+
+        CourseController controller
+                = new CourseController();
+
+        controller.saveCourse(course);
+
+        loadCourses();
+
+        clearForm();
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Curso guardado exitosamente");
+    }//GEN-LAST:event_btnSaveCourseActionPerformed
+
+    private void btnSearchCourse5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCourse5ActionPerformed
+        clearDeleteLabels();
+    }//GEN-LAST:event_btnSearchCourse5ActionPerformed
+
+    private void btnSearchCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCourseActionPerformed
+
+        CourseController controller
+                = new CourseController();
+
+        List<Course> results
+                = controller.searchCourses(
+                        txtSearchCourseName
+                                .getText(),
+                        txtSearchSubject
+                                .getText(),
+                        cmbSearchTeacher
+                                .getSelectedItem()
+                                .toString());
+
+        fillTable(tblSearchCourses, results);
+    }//GEN-LAST:event_btnSearchCourseActionPerformed
+
+    private void btnSearchCourse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCourse1ActionPerformed
+        txtSearchCourseName.setText("");
+
+        txtSearchSubject.setText("");
+
+        cmbSearchTeacher.setSelectedIndex(0);
+
+        loadCourses();
+    }//GEN-LAST:event_btnSearchCourse1ActionPerformed
+
+    private void btnCancelCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelCreateCourseActionPerformed
+        txtCourseId.setText("");
+
+        txtCourseName.setText("");
+
+        txtSubject.setText("");
+
+        cmbTeacher.setSelectedItem("0");
+
+        txtCourseDescription.setText("");
+    }//GEN-LAST:event_btnCancelCreateCourseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelCreateCourse;
-    private javax.swing.JButton btnCleanCourseInformation;
+    private javax.swing.JButton btnDeleteCourse;
     private javax.swing.JButton btnSaveCourse;
     private javax.swing.JButton btnSearchCourse;
     private javax.swing.JButton btnSearchCourse1;
+    private javax.swing.JButton btnSearchCourse3;
+    private javax.swing.JButton btnSearchCourse5;
+    private javax.swing.JButton btnUpdateCourse;
+    private javax.swing.JComboBox<String> cmbEditTeacher;
     private javax.swing.JComboBox<String> cmbSearchTeacher;
     private javax.swing.JComboBox<String> cmbTeacher;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -391,9 +1110,17 @@ public class PnlCourseManagement extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblDeleteDescription;
+    private javax.swing.JLabel lblDeleteId;
+    private javax.swing.JLabel lblDeleteName;
+    private javax.swing.JLabel lblDeleteSubject;
+    private javax.swing.JLabel lblDeleteTeacher;
     private javax.swing.JPanel pnlBodyConsultCourse;
     private javax.swing.JPanel pnlBodyCreateCourse;
+    private javax.swing.JPanel pnlBodyDeleteCourse1;
+    private javax.swing.JPanel pnlBodyEditCourse;
     private javax.swing.JPanel pnlConsultCourse;
     private javax.swing.JPanel pnlCreateCourse;
     private javax.swing.JPanel pnlDeleteCourse;
@@ -401,15 +1128,29 @@ public class PnlCourseManagement extends javax.swing.JPanel {
     private javax.swing.JPanel pnlFooterCreateCourse;
     private javax.swing.JPanel pnlFormConsultCourse;
     private javax.swing.JPanel pnlFormCreateCourse;
+    private javax.swing.JPanel pnlFormEditCourse;
+    private javax.swing.JPanel pnlFormEditCourse1;
     private javax.swing.JPanel pnlHeaderConsultCourse;
     private javax.swing.JPanel pnlHeaderCreateCourse;
+    private javax.swing.JPanel pnlHeaderDeleteCourse1;
+    private javax.swing.JPanel pnlHeaderEditCourse;
     private javax.swing.JPanel pnlTableConsultCourses1;
     private javax.swing.JPanel pnlTableCreateCourses;
-    private javax.swing.JTable tblConsultCourses1;
+    private javax.swing.JPanel pnlTableEditCourses;
+    private javax.swing.JPanel pnlTableEditCourses1;
+    private javax.swing.JScrollPane scrEditText;
+    private javax.swing.JTabbedPane tabCourseManagement;
     private javax.swing.JTable tblCreateCourses;
+    private javax.swing.JTable tblDeleteCourses;
+    private javax.swing.JTable tblEditCourses;
+    private javax.swing.JTable tblSearchCourses;
     private javax.swing.JTextArea txtCourseDescription;
+    private javax.swing.JTextField txtCourseId;
     private javax.swing.JTextField txtCourseName;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtEditCourseId;
+    private javax.swing.JTextArea txtEditDescription;
+    private javax.swing.JTextField txtEditName;
+    private javax.swing.JTextField txtEditSubject;
     private javax.swing.JTextField txtSearchCourseName;
     private javax.swing.JTextField txtSearchSubject;
     private javax.swing.JTextField txtSubject;

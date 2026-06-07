@@ -14,17 +14,40 @@ import java.util.List;
  */
 public class CourseController {
 
-    private final CourseDAO courseDAO;
+    private final CourseDAO dao;
 
     public CourseController() {
-        courseDAO = new CourseDAO();
+        dao = new CourseDAO();
     }
 
     public void saveCourse(Course course) {
-        courseDAO.save(course);
+        dao.save(course);
     }
 
     public List<Course> getAllCourses() {
-        return courseDAO.findAll();
+        return dao.findAll();
     }
+
+    public Course findById(String courseId) {
+        return dao.findById(courseId);
+    }
+
+    public void updateCourse(Course course) {
+        dao.update(course);
+    }
+
+    public void deleteCourse(String courseId) {
+        dao.delete(courseId);
+    }
+    
+    public List<Course> searchCourses(
+        String name,
+        String subject,
+        String teacher){
+
+    return dao.search(
+            name,
+            subject,
+            teacher);
+}
 }

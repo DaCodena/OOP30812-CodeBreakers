@@ -15,6 +15,7 @@ public class FrmAdminDashboard extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAdminDashboard.class.getName());
 
     private CardLayout cardLayout;
+    private PnlCourseManagement pnlCourseManagement;
 
     /**
      * Creates new form IScreen
@@ -24,6 +25,8 @@ public class FrmAdminDashboard extends javax.swing.JFrame {
 
         cardLayout = (CardLayout) mainPanel.getLayout();
 
+        pnlCourseManagement = new PnlCourseManagement();
+
         mainPanel.add(new PnlDashboard(), "dashboard");
         mainPanel.add(new PnlStudents(), "students");
         mainPanel.add(new PnlCourses(), "courses");
@@ -31,7 +34,9 @@ public class FrmAdminDashboard extends javax.swing.JFrame {
         mainPanel.add(new PnlHelp(), "help");
         mainPanel.add(new PnlTeachers(), "teachers");
         mainPanel.add(new PnlClassification(), "classification");
-        mainPanel.add(new PnlCourseManagement(), "courseManagment");
+        mainPanel.add(new PnlCourseManagement(), "courseManagement");
+
+        mainPanel.add(pnlCourseManagement, "courseManagement");
 
         cardLayout.show(mainPanel, "dashboard");
     }
@@ -244,7 +249,9 @@ public class FrmAdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miConsultCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultCourseActionPerformed
-        cardLayout.show(mainPanel, "courseManagment");
+        pnlCourseManagement.showTab(1);
+        cardLayout.show(mainPanel, "courseManagement");
+
     }//GEN-LAST:event_miConsultCourseActionPerformed
 
     private void miRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegisterStudentActionPerformed
@@ -296,15 +303,19 @@ public class FrmAdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_miLearningPaceActionPerformed
 
     private void miCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCreateCourseActionPerformed
-        cardLayout.show(mainPanel, "courseManagment");
+        pnlCourseManagement.showTab(0);
+        cardLayout.show(mainPanel, "courseManagement");
+
     }//GEN-LAST:event_miCreateCourseActionPerformed
 
     private void miEditCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditCourseActionPerformed
-        cardLayout.show(mainPanel, "courseManagment");
+        pnlCourseManagement.showTab(2);
+        cardLayout.show(mainPanel, "courseManagement");
     }//GEN-LAST:event_miEditCourseActionPerformed
 
     private void miDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDeleteCourseActionPerformed
-        cardLayout.show(mainPanel, "courseManagment");
+        pnlCourseManagement.showTab(3);
+        cardLayout.show(mainPanel, "courseManagement");
     }//GEN-LAST:event_miDeleteCourseActionPerformed
 
     private void miLowPerformanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLowPerformanceActionPerformed
