@@ -830,6 +830,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void tblEditCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEditCoursesMouseClicked
         int row
                 = tblEditCourses.getSelectedRow();
@@ -993,7 +994,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteCourseActionPerformed
 
-    private void btnSaveCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCourseActionPerformed
+    private void btnSaveCourseActionPerformed(java.awt.event.ActionEvent evt) {                                              
 
         if (cmbTeacher.getSelectedItem().toString().equals("-")) {
 
@@ -1024,7 +1025,7 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(
                 this,
                 "Curso guardado exitosamente");
-    }//GEN-LAST:event_btnSaveCourseActionPerformed
+    }                                             
 
     private void btnSearchCourse5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCourse5ActionPerformed
         clearDeleteLabels();
@@ -1070,6 +1071,11 @@ public class PnlCourseManagement extends javax.swing.JPanel {
         txtCourseDescription.setText("");
     }//GEN-LAST:event_btnCancelCreateCourseActionPerformed
 
+/*
+    private void btnSaveCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveCourseActionPerformed
+*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelCreateCourse;
