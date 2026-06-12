@@ -1,0 +1,12 @@
+ec\edu\espe\schoolsoftware\model\Student.class
+ec\edu\espe\schoolsoftware\utils\MongoConnection.class
+ec\edu\espe\schoolsoftware\view\FrmMenu.class
+ec\edu\espe\schoolsoftware\controller\CrudOperations.class
+ec\edu\espe\schoolsoftware\view\FrmLogin.class
+ec\edu\espe\schoolsoftware\controller\StudentController.class
+ec\edu\espe\schoolsoftware\view\FrmAddStudent.class
+ec\edu\espe\schoolsoftware\view\FrmSplash.class
+ec\edu\espe\schoolsoftware\controller\CourseController.class
+ec\edu\espe\schoolsoftware\controller\UserController.class
+ec\edu\espe\schoolsoftware\model\Course.class
+ec\edu\espe\schoolsoftware\model\User.class
