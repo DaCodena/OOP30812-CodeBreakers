@@ -4,22 +4,22 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
-import ec.edu.espe.schoolsoftware.controller.StudentController;
-import ec.edu.espe.schoolsoftware.model.Student;
+import ec.edu.espe.schoolsoftware.controller.TeacherController;
+import ec.edu.espe.schoolsoftware.model.Teacher;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
-public class FrmAddStudent extends javax.swing.JFrame {
+public class FrmAddTeacher extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAddStudent.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAddTeacher.class.getName());
 
     /**
      * Creates new form FrmAddStudent
      */
-    public FrmAddStudent() {
+    public FrmAddTeacher() {
         initComponents();
     }
 
@@ -35,19 +35,14 @@ public class FrmAddStudent extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txtStudentId = new javax.swing.JTextField();
-        txtStudentNames = new javax.swing.JTextField();
-        txtStudentSurnames = new javax.swing.JTextField();
+        txtTeacherId = new javax.swing.JTextField();
+        txtTeacherNames = new javax.swing.JTextField();
+        txtTeacherSurnames = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtDay = new javax.swing.JTextField();
-        cmbMonth = new javax.swing.JComboBox<>();
-        txtYear = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txtProfession = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnAddStudent = new javax.swing.JButton();
         txtClean = new javax.swing.JButton();
@@ -57,7 +52,7 @@ public class FrmAddStudent extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Añadir estudiante");
+        jLabel1.setText("Añadir profesor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,15 +77,7 @@ public class FrmAddStudent extends javax.swing.JFrame {
 
         jLabel4.setText("Id:");
 
-        jLabel5.setText("Fecha de nacimiento");
-
-        cmbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-
-        jLabel6.setText("Día:");
-
-        jLabel7.setText("Mes:");
-
-        jLabel8.setText("Año:");
+        jLabel5.setText("Profesión:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,32 +87,20 @@ public class FrmAddStudent extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmbMonth, 0, 118, Short.MAX_VALUE)
-                                    .addComponent(txtYear)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtStudentNames)
-                            .addComponent(txtStudentSurnames)
-                            .addComponent(txtStudentId))
-                        .addGap(74, 74, 74))
-                    .addComponent(jLabel5)))
+                            .addComponent(txtTeacherNames, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                            .addComponent(txtTeacherSurnames)
+                            .addComponent(txtTeacherId)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtProfession)))
+                .addGap(74, 74, 74))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,29 +110,19 @@ public class FrmAddStudent extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTeacherId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStudentNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTeacherNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(35, 35, 35)
-                        .addComponent(txtStudentSurnames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                        .addComponent(txtTeacherSurnames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(txtProfession, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         btnAddStudent.setText("Añadir");
@@ -227,18 +192,15 @@ public class FrmAddStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackToMenuActionPerformed
 
     private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
-        String id = txtStudentId.getText();
-        String names = txtStudentNames.getText();
-        String surnames = txtStudentSurnames.getText();
-        int day = Integer.parseInt(txtDay.getText());
-        String month = cmbMonth.getSelectedItem().toString();
-        int year = Integer.parseInt(txtYear.getText());
+        String id = txtTeacherId.getText();
+        String names = txtTeacherNames.getText();
+        String surnames = txtTeacherSurnames.getText();
+        String profession = txtProfession.getText();
 
-        Student student = new Student(id, names, surnames, day, month, year);
-
-        StudentController studentController = new StudentController();
-
-        studentController.save(student);
+        Teacher teacher = new Teacher(id, names, surnames, profession);
+        TeacherController teacherController = new TeacherController();
+        
+        teacherController.save(teacher);
         
         JOptionPane.showMessageDialog(null, "Guardado exitosamente");
         
@@ -250,19 +212,15 @@ public class FrmAddStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCleanActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        FrmManageStudent frmManageStudent = new FrmManageStudent();
-        frmManageStudent.setVisible(true);
-        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void clean() {
-        txtStudentId.setText("");
-        txtStudentNames.setText("");
-        txtStudentSurnames.setText("");
-        txtDay.setText("");
-        txtYear.setText("");
-        
-        cmbMonth.setSelectedIndex(0);
+        txtTeacherId.setText("");
+        txtTeacherNames.setText("");
+        txtTeacherSurnames.setText("");
+        txtProfession.setText("");
+
     }
 
     /**
@@ -287,30 +245,25 @@ public class FrmAddStudent extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmAddStudent().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmAddTeacher().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddStudent;
     private javax.swing.JButton btnBackToMenu;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbMonth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton txtClean;
-    private javax.swing.JTextField txtDay;
-    private javax.swing.JTextField txtStudentId;
-    private javax.swing.JTextField txtStudentNames;
-    private javax.swing.JTextField txtStudentSurnames;
-    private javax.swing.JTextField txtYear;
+    private javax.swing.JTextField txtProfession;
+    private javax.swing.JTextField txtTeacherId;
+    private javax.swing.JTextField txtTeacherNames;
+    private javax.swing.JTextField txtTeacherSurnames;
     // End of variables declaration//GEN-END:variables
 }

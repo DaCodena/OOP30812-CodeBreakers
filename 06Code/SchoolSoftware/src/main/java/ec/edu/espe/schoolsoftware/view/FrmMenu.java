@@ -69,6 +69,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu6.add(itmAddStudent);
 
         itmUpdateStudent.setText("Actualizar");
+        itmUpdateStudent.addActionListener(this::itmUpdateStudentActionPerformed);
         jMenu6.add(itmUpdateStudent);
 
         jMenu2.add(jMenu6);
@@ -134,6 +135,12 @@ public class FrmMenu extends javax.swing.JFrame {
         frmStudent.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_itmAddStudentActionPerformed
+
+    private void itmUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateStudentActionPerformed
+        FrmManageStudent frmStudent = new FrmManageStudent();
+        frmStudent.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmUpdateStudentActionPerformed
 
     /**
      * @param args the command line arguments

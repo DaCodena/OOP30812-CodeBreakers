@@ -8,23 +8,17 @@ package ec.edu.espe.schoolsoftware.model;
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
-public class Student {
-
+public class Teacher {
     private String id;
     private String names;
     private String surnames;
-    private int day;
-    private String month;
-    private int year;
+    private String profession;
 
-    public Student(String id, String names, String surnames, int day, String month, int year) {
-
+    public Teacher(String id, String names, String surnames, String profession) {
         this.id = id;
         this.names = names;
         this.surnames = surnames;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.profession = profession;
     }
 
     public String getId() {
@@ -51,29 +45,12 @@ public class Student {
         this.surnames = surnames;
     }
 
-    public int getDay() {
-        return day;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-
+    
 }

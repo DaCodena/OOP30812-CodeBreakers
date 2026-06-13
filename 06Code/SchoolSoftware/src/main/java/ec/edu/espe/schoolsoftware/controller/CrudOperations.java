@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.schoolsoftware.controller;
 
+
 /**
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
@@ -11,4 +12,11 @@ package ec.edu.espe.schoolsoftware.controller;
 public interface CrudOperations<T> {
     
     void save(T object);
+    
+    void update(T object);
+    
+    void delete(String id);
+    
+    T findById(String id);
+    
 }
