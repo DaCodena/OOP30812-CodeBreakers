@@ -4,23 +4,29 @@
  */
 package ec.edu.espe.schoolsoftware.controller;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.schoolsoftware.model.User;
+import ec.edu.espe.schoolsoftware.utils.MongoConnection;
+import org.bson.Document;
 
 /**
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class UserController {
-    User user;
 
-    public boolean login(String userName, String password) {
-        
-        //TODO read from db
-        //call to method to read from DB that is in the utils package
-        //Using the JSON string build an object of type user
-        
-        user = new User(1, "Daniel", "Daniel");
-        
-        return user.getUserName().equals(userName) && user.getPassword().equals(password);
+    public void save(User user) {
+
+        MongoDatabase database = MongoConnection.getDatabase();
+
+        MongoCollection<Document> collection = database.getCollection("users");
+
+        Document document = new Document()
+                .append("_id", user.getUsername())
+                .append("password", user.getPassword())
+                .append("role", user.getRole());
+
+        collection.insertOne(document);
     }
 }

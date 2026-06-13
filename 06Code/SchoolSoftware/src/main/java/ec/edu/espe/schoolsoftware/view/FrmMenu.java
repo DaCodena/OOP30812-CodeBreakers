@@ -4,12 +4,14 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
+import ec.edu.espe.schoolsoftware.model.Session;
+
 /**
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class FrmMenu extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenu.class.getName());
 
     /**
@@ -17,6 +19,24 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     public FrmMenu() {
         initComponents();
+
+        String role = Session.currentUser.getRole();
+
+        switch (role) {
+
+            case "ADMIN":
+                break;
+
+            case "TEACHER":
+                menuManage.setVisible(false);
+                break;
+
+            case "STUDENT":
+                menuManage.setVisible(false);
+                menuActivities.setVisible(false);
+                menuAlerts.setVisible(false);
+                break;
+        }
     }
 
     /**
@@ -29,10 +49,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuFiles = new javax.swing.JMenu();
+        itmLogOut = new javax.swing.JMenuItem();
+        itmExit = new javax.swing.JMenuItem();
+        menuManage = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         itmAddStudent = new javax.swing.JMenuItem();
         itmUpdateStudent = new javax.swing.JMenuItem();
@@ -42,25 +62,30 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         itmAddCourse = new javax.swing.JMenuItem();
         itmUpdateCourse = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        menuCourses = new javax.swing.JMenu();
+        menuActivities = new javax.swing.JMenu();
+        itmCreateActivity = new javax.swing.JMenuItem();
+        itmRecordActivity = new javax.swing.JMenuItem();
+        menuAlerts = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Archivo");
+        menuFiles.setText("Archivo");
 
-        jMenuItem1.setText("Cerrar sesión");
-        jMenu1.add(jMenuItem1);
+        itmLogOut.setText("Cerrar sesión");
+        itmLogOut.addActionListener(this::itmLogOutActionPerformed);
+        menuFiles.add(itmLogOut);
 
-        jMenuItem2.setText("Salir");
-        jMenu1.add(jMenuItem2);
+        itmExit.setText("Salir");
+        itmExit.addActionListener(this::itmExitActionPerformed);
+        menuFiles.add(itmExit);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuFiles);
 
-        jMenu2.setText("Manejar");
+        menuManage.setText("Manejar");
 
         jMenu6.setText("Estudiantes");
 
@@ -72,7 +97,7 @@ public class FrmMenu extends javax.swing.JFrame {
         itmUpdateStudent.addActionListener(this::itmUpdateStudentActionPerformed);
         jMenu6.add(itmUpdateStudent);
 
-        jMenu2.add(jMenu6);
+        menuManage.add(jMenu6);
 
         jMenu7.setText("Profesores");
 
@@ -82,7 +107,7 @@ public class FrmMenu extends javax.swing.JFrame {
         itmUpdateTeacher.setText("Actualizar");
         jMenu7.add(itmUpdateTeacher);
 
-        jMenu2.add(jMenu7);
+        menuManage.add(jMenu7);
 
         jMenu8.setText("Cursos");
 
@@ -92,19 +117,29 @@ public class FrmMenu extends javax.swing.JFrame {
         itmUpdateCourse.setText("Actualizar");
         jMenu8.add(itmUpdateCourse);
 
-        jMenu2.add(jMenu8);
+        menuManage.add(jMenu8);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuManage);
 
-        jMenu3.setText("Mis Cursos");
-        jMenuBar1.add(jMenu3);
+        menuCourses.setText("Mis Cursos");
+        jMenuBar1.add(menuCourses);
 
-        jMenu4.setText("Alertas");
+        menuActivities.setText("Actividades");
+
+        itmCreateActivity.setText("Crear");
+        menuActivities.add(itmCreateActivity);
+
+        itmRecordActivity.setText("Calificar");
+        menuActivities.add(itmRecordActivity);
+
+        jMenuBar1.add(menuActivities);
+
+        menuAlerts.setText("Alertas");
 
         jMenuItem8.setText("Bajo rendimiento");
-        jMenu4.add(jMenuItem8);
+        menuAlerts.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuAlerts);
 
         jMenu5.setText("Ayuda");
 
@@ -142,6 +177,20 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_itmUpdateStudentActionPerformed
 
+    private void itmLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmLogOutActionPerformed
+        Session.currentUser = null;
+
+        FrmLogin login = new FrmLogin();
+
+        login.setVisible(true);
+
+        dispose();
+    }//GEN-LAST:event_itmLogOutActionPerformed
+
+    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_itmExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,21 +220,24 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmAddCourse;
     private javax.swing.JMenuItem itmAddStudent;
     private javax.swing.JMenuItem itmAddTeacher;
+    private javax.swing.JMenuItem itmCreateActivity;
+    private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmLogOut;
+    private javax.swing.JMenuItem itmRecordActivity;
     private javax.swing.JMenuItem itmUpdateCourse;
     private javax.swing.JMenuItem itmUpdateStudent;
     private javax.swing.JMenuItem itmUpdateTeacher;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu menuActivities;
+    private javax.swing.JMenu menuAlerts;
+    private javax.swing.JMenu menuCourses;
+    private javax.swing.JMenu menuFiles;
+    private javax.swing.JMenu menuManage;
     // End of variables declaration//GEN-END:variables
 }

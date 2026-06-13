@@ -4,7 +4,10 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
-import ec.edu.espe.schoolsoftware.controller.UserController;
+import ec.edu.espe.schoolsoftware.controller.LoginController;
+import ec.edu.espe.schoolsoftware.model.Session;
+import ec.edu.espe.schoolsoftware.model.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -97,19 +100,28 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptLoginActionPerformed
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
+        String username = txtUserName.getText();
 
-        UserController userController = new UserController();
+        String password = String.valueOf(txtPassword.getPassword());
 
-        if (userController.login(userName, password)) {
-            //Welcome the user and OPEN the menu
-            FrmMenu frmMenu = new FrmMenu();
-            this.dispose();
-            frmMenu.setVisible(true);
-        } else {
-            //Send the user to the login screen again
+        LoginController controller
+                = new LoginController();
+
+        User user = controller.login(username, password);
+
+        if (user == null) {
+
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas");
+            return;
         }
+        
+        Session.currentUser = user;
+
+        FrmMenu menu = new FrmMenu();
+
+        menu.setVisible(true);
+
+        dispose();
     }//GEN-LAST:event_btnAcceptLoginActionPerformed
 
     /**

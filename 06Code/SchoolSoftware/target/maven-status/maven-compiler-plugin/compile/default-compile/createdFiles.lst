@@ -10,6 +10,9 @@ ec\edu\espe\schoolsoftware\view\FrmAddTeacher.class
 ec\edu\espe\schoolsoftware\controller\TeacherController.class
 ec\edu\espe\schoolsoftware\controller\UserController.class
 ec\edu\espe\schoolsoftware\view\FrmManageStudent$1.class
+ec\edu\espe\schoolsoftware\view\FrmAddStudent$1.class
+ec\edu\espe\schoolsoftware\model\Session.class
+ec\edu\espe\schoolsoftware\controller\LoginController.class
 ec\edu\espe\schoolsoftware\controller\CrudOperations.class
 ec\edu\espe\schoolsoftware\view\FrmLogin.class
 ec\edu\espe\schoolsoftware\view\FrmAddStudent.class
