@@ -34,7 +34,6 @@ public class FrmMenu extends javax.swing.JFrame {
             case "STUDENT":
                 menuManage.setVisible(false);
                 menuActivities.setVisible(false);
-                menuAlerts.setVisible(false);
                 break;
         }
     }
@@ -62,14 +61,26 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         itmAddCourse = new javax.swing.JMenuItem();
         itmUpdateCourse = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itmAddEnrollment = new javax.swing.JMenuItem();
+        itmUpdateEnrollment = new javax.swing.JMenuItem();
         menuCourses = new javax.swing.JMenu();
         menuActivities = new javax.swing.JMenu();
-        itmCreateActivity = new javax.swing.JMenuItem();
-        itmRecordActivity = new javax.swing.JMenuItem();
-        menuAlerts = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        itmAddActivity = new javax.swing.JMenuItem();
+        itmUpdateActivities = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        itmAddQuiz = new javax.swing.JMenuItem();
+        itmUpdateQuizzes = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        itmAddGrade = new javax.swing.JMenuItem();
+        itmUpdateGrades = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        itmAddMaterial = new javax.swing.JMenuItem();
+        itmUpdateMaterials = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +104,7 @@ public class FrmMenu extends javax.swing.JFrame {
         itmAddStudent.addActionListener(this::itmAddStudentActionPerformed);
         jMenu6.add(itmAddStudent);
 
-        itmUpdateStudent.setText("Actualizar");
+        itmUpdateStudent.setText("Administrar");
         itmUpdateStudent.addActionListener(this::itmUpdateStudentActionPerformed);
         jMenu6.add(itmUpdateStudent);
 
@@ -105,7 +116,7 @@ public class FrmMenu extends javax.swing.JFrame {
         itmAddTeacher.addActionListener(this::itmAddTeacherActionPerformed);
         jMenu7.add(itmAddTeacher);
 
-        itmUpdateTeacher.setText("Actualizar");
+        itmUpdateTeacher.setText("Administrar");
         itmUpdateTeacher.addActionListener(this::itmUpdateTeacherActionPerformed);
         jMenu7.add(itmUpdateTeacher);
 
@@ -117,11 +128,23 @@ public class FrmMenu extends javax.swing.JFrame {
         itmAddCourse.addActionListener(this::itmAddCourseActionPerformed);
         jMenu8.add(itmAddCourse);
 
-        itmUpdateCourse.setText("Actualizar");
+        itmUpdateCourse.setText("Administrar");
         itmUpdateCourse.addActionListener(this::itmUpdateCourseActionPerformed);
         jMenu8.add(itmUpdateCourse);
 
         menuManage.add(jMenu8);
+
+        jMenu1.setText("Inscripciones");
+
+        itmAddEnrollment.setText("Añadir");
+        itmAddEnrollment.addActionListener(this::itmAddEnrollmentActionPerformed);
+        jMenu1.add(itmAddEnrollment);
+
+        itmUpdateEnrollment.setText("Administrar");
+        itmUpdateEnrollment.addActionListener(this::itmUpdateEnrollmentActionPerformed);
+        jMenu1.add(itmUpdateEnrollment);
+
+        menuManage.add(jMenu1);
 
         jMenuBar1.add(menuManage);
 
@@ -130,25 +153,63 @@ public class FrmMenu extends javax.swing.JFrame {
 
         menuActivities.setText("Actividades");
 
-        itmCreateActivity.setText("Crear");
-        menuActivities.add(itmCreateActivity);
+        jMenu9.setText("Actividades");
 
-        itmRecordActivity.setText("Calificar");
-        menuActivities.add(itmRecordActivity);
+        itmAddActivity.setText("Añadir");
+        itmAddActivity.addActionListener(this::itmAddActivityActionPerformed);
+        jMenu9.add(itmAddActivity);
+
+        itmUpdateActivities.setText("Administrar");
+        itmUpdateActivities.addActionListener(this::itmUpdateActivitiesActionPerformed);
+        jMenu9.add(itmUpdateActivities);
+
+        menuActivities.add(jMenu9);
+
+        jMenu2.setText("Quizzes");
+
+        itmAddQuiz.setText("Añadir");
+        itmAddQuiz.addActionListener(this::itmAddQuizActionPerformed);
+        jMenu2.add(itmAddQuiz);
+
+        itmUpdateQuizzes.setText("Administrar");
+        itmUpdateQuizzes.addActionListener(this::itmUpdateQuizzesActionPerformed);
+        jMenu2.add(itmUpdateQuizzes);
+
+        menuActivities.add(jMenu2);
+
+        jMenu3.setText("Calificaciones");
+
+        itmAddGrade.setText("Añadir");
+        itmAddGrade.addActionListener(this::itmAddGradeActionPerformed);
+        jMenu3.add(itmAddGrade);
+
+        itmUpdateGrades.setText("Administrar");
+        itmUpdateGrades.addActionListener(this::itmUpdateGradesActionPerformed);
+        jMenu3.add(itmUpdateGrades);
+
+        menuActivities.add(jMenu3);
+
+        jMenu4.setText("Materiales");
+
+        itmAddMaterial.setText("Añadir");
+        itmAddMaterial.addActionListener(this::itmAddMaterialActionPerformed);
+        jMenu4.add(itmAddMaterial);
+
+        itmUpdateMaterials.setText("Administrar");
+        itmUpdateMaterials.addActionListener(this::itmUpdateMaterialsActionPerformed);
+        jMenu4.add(itmUpdateMaterials);
+
+        menuActivities.add(jMenu4);
 
         jMenuBar1.add(menuActivities);
-
-        menuAlerts.setText("Alertas");
-
-        jMenuItem8.setText("Bajo rendimiento");
-        menuAlerts.add(jMenuItem8);
-
-        jMenuBar1.add(menuAlerts);
 
         jMenu5.setText("Ayuda");
 
         jMenuItem7.setText("Acerca de");
         jMenu5.add(jMenuItem7);
+
+        jMenuItem2.setText("Guía");
+        jMenu5.add(jMenuItem2);
 
         jMenuBar1.add(jMenu5);
 
@@ -219,6 +280,59 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_itmUpdateCourseActionPerformed
 
+    private void itmAddActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddActivityActionPerformed
+        FrmAddActivity frmAdd = new FrmAddActivity();
+        frmAdd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmAddActivityActionPerformed
+
+    private void itmAddQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddQuizActionPerformed
+        FrmAddQuiz frmAdd = new FrmAddQuiz();
+        frmAdd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmAddQuizActionPerformed
+
+    private void itmAddGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddGradeActionPerformed
+
+    }//GEN-LAST:event_itmAddGradeActionPerformed
+
+    private void itmAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddMaterialActionPerformed
+        FrmAddMaterial frmAdd = new FrmAddMaterial();
+        frmAdd.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmAddMaterialActionPerformed
+
+    private void itmUpdateActivitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateActivitiesActionPerformed
+        FrmManageActivity frmManage = new FrmManageActivity();
+        frmManage.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmUpdateActivitiesActionPerformed
+
+    private void itmUpdateQuizzesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateQuizzesActionPerformed
+        FrmManageQuiz frmManage = new FrmManageQuiz();
+        frmManage.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmUpdateQuizzesActionPerformed
+
+    private void itmUpdateGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateGradesActionPerformed
+
+    }//GEN-LAST:event_itmUpdateGradesActionPerformed
+
+    private void itmUpdateMaterialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateMaterialsActionPerformed
+        FrmManageMaterial frmManage = new FrmManageMaterial();
+        frmManage.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmUpdateMaterialsActionPerformed
+
+    private void itmAddEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddEnrollmentActionPerformed
+
+    }//GEN-LAST:event_itmAddEnrollmentActionPerformed
+
+    private void itmUpdateEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateEnrollmentActionPerformed
+
+
+        this.setVisible(false);    }//GEN-LAST:event_itmUpdateEnrollmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,25 +359,37 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmAddActivity;
     private javax.swing.JMenuItem itmAddCourse;
+    private javax.swing.JMenuItem itmAddEnrollment;
+    private javax.swing.JMenuItem itmAddGrade;
+    private javax.swing.JMenuItem itmAddMaterial;
+    private javax.swing.JMenuItem itmAddQuiz;
     private javax.swing.JMenuItem itmAddStudent;
     private javax.swing.JMenuItem itmAddTeacher;
-    private javax.swing.JMenuItem itmCreateActivity;
     private javax.swing.JMenuItem itmExit;
     private javax.swing.JMenuItem itmLogOut;
-    private javax.swing.JMenuItem itmRecordActivity;
+    private javax.swing.JMenuItem itmUpdateActivities;
     private javax.swing.JMenuItem itmUpdateCourse;
+    private javax.swing.JMenuItem itmUpdateEnrollment;
+    private javax.swing.JMenuItem itmUpdateGrades;
+    private javax.swing.JMenuItem itmUpdateMaterials;
+    private javax.swing.JMenuItem itmUpdateQuizzes;
     private javax.swing.JMenuItem itmUpdateStudent;
     private javax.swing.JMenuItem itmUpdateTeacher;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenu menuActivities;
-    private javax.swing.JMenu menuAlerts;
     private javax.swing.JMenu menuCourses;
     private javax.swing.JMenu menuFiles;
     private javax.swing.JMenu menuManage;
