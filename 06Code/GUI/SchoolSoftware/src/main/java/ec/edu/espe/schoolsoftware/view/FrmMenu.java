@@ -4,7 +4,10 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
+import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
+import ec.edu.espe.schoolsoftware.controller.GradeController;
 import ec.edu.espe.schoolsoftware.model.Session;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,9 +81,14 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         itmAddMaterial = new javax.swing.JMenuItem();
         itmUpdateMaterials = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        itmStatistics = new javax.swing.JMenuItem();
+        itmReports = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
+        itmLowPerformance = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itmAbout = new javax.swing.JMenuItem();
+        itmGuide = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,13 +211,35 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuActivities);
 
+        jMenu10.setText("Reportes");
+
+        itmStatistics.setText("Estadisticas");
+        itmStatistics.addActionListener(this::itmStatisticsActionPerformed);
+        jMenu10.add(itmStatistics);
+
+        itmReports.setText("Reportes");
+        itmReports.addActionListener(this::itmReportsActionPerformed);
+        jMenu10.add(itmReports);
+
+        jMenuBar1.add(jMenu10);
+
+        jMenu11.setText("Alertas");
+
+        itmLowPerformance.setText("Detectar bajo rendimiento");
+        itmLowPerformance.addActionListener(this::itmLowPerformanceActionPerformed);
+        jMenu11.add(itmLowPerformance);
+
+        jMenuBar1.add(jMenu11);
+
         jMenu5.setText("Ayuda");
 
-        jMenuItem7.setText("Acerca de");
-        jMenu5.add(jMenuItem7);
+        itmAbout.setText("Acerca de");
+        itmAbout.addActionListener(this::itmAboutActionPerformed);
+        jMenu5.add(itmAbout);
 
-        jMenuItem2.setText("Guía");
-        jMenu5.add(jMenuItem2);
+        itmGuide.setText("Guía");
+        itmGuide.addActionListener(this::itmGuideActionPerformed);
+        jMenu5.add(itmGuide);
 
         jMenuBar1.add(jMenu5);
 
@@ -293,7 +323,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itmAddQuizActionPerformed
 
     private void itmAddGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddGradeActionPerformed
-
+        FrmAddGrade frmAdd = new FrmAddGrade();
+        frmAdd.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_itmAddGradeActionPerformed
 
     private void itmAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddMaterialActionPerformed
@@ -315,7 +347,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itmUpdateQuizzesActionPerformed
 
     private void itmUpdateGradesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateGradesActionPerformed
-
+        FrmManageGrade frmManage = new FrmManageGrade();
+        frmManage.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_itmUpdateGradesActionPerformed
 
     private void itmUpdateMaterialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateMaterialsActionPerformed
@@ -325,13 +359,45 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itmUpdateMaterialsActionPerformed
 
     private void itmAddEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddEnrollmentActionPerformed
-
+        FrmAddEnrollment frmAdd = new FrmAddEnrollment();
+        frmAdd.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_itmAddEnrollmentActionPerformed
 
     private void itmUpdateEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmUpdateEnrollmentActionPerformed
-
-
+        FrmManageEnrollment frmManage = new FrmManageEnrollment();
+        frmManage.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_itmUpdateEnrollmentActionPerformed
+
+    private void itmStatisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmStatisticsActionPerformed
+        FrmStatistics frmStatistics = new FrmStatistics();
+        frmStatistics.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmStatisticsActionPerformed
+
+    private void itmLowPerformanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmLowPerformanceActionPerformed
+        FrmAlerts frmAlerts = new FrmAlerts();
+        frmAlerts.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmLowPerformanceActionPerformed
+
+    private void itmReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmReportsActionPerformed
+        FrmReports frmReports = new FrmReports();
+        frmReports.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmReportsActionPerformed
+
+    private void itmAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAboutActionPerformed
+        FrmAbout frmAbout = new FrmAbout();
+        frmAbout.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmAboutActionPerformed
+
+    private void itmGuideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmGuideActionPerformed
+        FrmGuide frmGuide = new FrmGuide();
+        frmGuide.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmGuideActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,6 +425,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itmAbout;
     private javax.swing.JMenuItem itmAddActivity;
     private javax.swing.JMenuItem itmAddCourse;
     private javax.swing.JMenuItem itmAddEnrollment;
@@ -368,7 +435,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmAddStudent;
     private javax.swing.JMenuItem itmAddTeacher;
     private javax.swing.JMenuItem itmExit;
+    private javax.swing.JMenuItem itmGuide;
     private javax.swing.JMenuItem itmLogOut;
+    private javax.swing.JMenuItem itmLowPerformance;
+    private javax.swing.JMenuItem itmReports;
+    private javax.swing.JMenuItem itmStatistics;
     private javax.swing.JMenuItem itmUpdateActivities;
     private javax.swing.JMenuItem itmUpdateCourse;
     private javax.swing.JMenuItem itmUpdateEnrollment;
@@ -378,6 +449,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmUpdateStudent;
     private javax.swing.JMenuItem itmUpdateTeacher;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -387,8 +460,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenu menuActivities;
     private javax.swing.JMenu menuCourses;
     private javax.swing.JMenu menuFiles;

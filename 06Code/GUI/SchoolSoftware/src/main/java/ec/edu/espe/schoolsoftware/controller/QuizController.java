@@ -22,11 +22,11 @@ public class QuizController implements CrudOperations<Quiz> {
     @Override
     public void save(Quiz quiz) {
 
-        MongoDatabase database =
-                MongoConnection.getDatabase();
+        MongoDatabase database
+                = MongoConnection.getDatabase();
 
-        MongoCollection<Document> collection =
-                database.getCollection("quizzes");
+        MongoCollection<Document> collection
+                = database.getCollection("quizzes");
 
         Document document = new Document()
                 .append("_id", quiz.getId())
@@ -39,11 +39,11 @@ public class QuizController implements CrudOperations<Quiz> {
     @Override
     public void update(Quiz quiz) {
 
-        MongoDatabase database =
-                MongoConnection.getDatabase();
+        MongoDatabase database
+                = MongoConnection.getDatabase();
 
-        MongoCollection<Document> collection =
-                database.getCollection("quizzes");
+        MongoCollection<Document> collection
+                = database.getCollection("quizzes");
 
         Document update = new Document("$set",
                 new Document("courseId",
@@ -59,11 +59,11 @@ public class QuizController implements CrudOperations<Quiz> {
     @Override
     public void delete(String id) {
 
-        MongoDatabase database =
-                MongoConnection.getDatabase();
+        MongoDatabase database
+                = MongoConnection.getDatabase();
 
-        MongoCollection<Document> collection =
-                database.getCollection("quizzes");
+        MongoCollection<Document> collection
+                = database.getCollection("quizzes");
 
         collection.deleteOne(
                 Filters.eq("_id", id));
@@ -72,14 +72,14 @@ public class QuizController implements CrudOperations<Quiz> {
     @Override
     public Quiz findById(String id) {
 
-        MongoDatabase database =
-                MongoConnection.getDatabase();
+        MongoDatabase database
+                = MongoConnection.getDatabase();
 
-        MongoCollection<Document> collection =
-                database.getCollection("quizzes");
+        MongoCollection<Document> collection
+                = database.getCollection("quizzes");
 
-        Document doc =
-                collection.find(
+        Document doc
+                = collection.find(
                         Filters.eq("_id", id))
                         .first();
 
@@ -95,17 +95,17 @@ public class QuizController implements CrudOperations<Quiz> {
 
     public ArrayList<Quiz> getAllQuizzes() {
 
-        ArrayList<Quiz> quizzes =
-                new ArrayList<>();
+        ArrayList<Quiz> quizzes
+                = new ArrayList<>();
 
-        MongoDatabase database =
-                MongoConnection.getDatabase();
+        MongoDatabase database
+                = MongoConnection.getDatabase();
 
-        MongoCollection<Document> collection =
-                database.getCollection("quizzes");
+        MongoCollection<Document> collection
+                = database.getCollection("quizzes");
 
-        FindIterable<Document> documents =
-                collection.find();
+        FindIterable<Document> documents
+                = collection.find();
 
         for (Document doc : documents) {
 
@@ -118,5 +118,13 @@ public class QuizController implements CrudOperations<Quiz> {
         }
 
         return quizzes;
+    }
+
+    public boolean createQuiz(
+            Quiz quiz) {
+
+        save(quiz);
+
+        return true;
     }
 }

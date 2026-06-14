@@ -4,16 +4,9 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
-import ec.edu.espe.schoolsoftware.controller.ActivityController;
-import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
-import ec.edu.espe.schoolsoftware.controller.QuizController;
-import ec.edu.espe.schoolsoftware.controller.StudentController;
-import ec.edu.espe.schoolsoftware.controller.TeacherController;
-import ec.edu.espe.schoolsoftware.model.Activity;
-import ec.edu.espe.schoolsoftware.model.Enrollment;
-import ec.edu.espe.schoolsoftware.model.Quiz;
-import ec.edu.espe.schoolsoftware.model.Student;
-import ec.edu.espe.schoolsoftware.model.Teacher;
+
+import ec.edu.espe.schoolsoftware.controller.GradeController;
+import ec.edu.espe.schoolsoftware.model.Grade;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,16 +15,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public class FrmManageQuiz extends javax.swing.JFrame {
+public class FrmManageGrade extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmManageQuiz.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmManageGrade.class.getName());
 
     /**
      * Creates new form FrmAddStudent
      */
-    public FrmManageQuiz() {
+    public FrmManageGrade() {
         initComponents();
-        loadQuiz();
+        loadGrades();
     }
 
     /**
@@ -47,26 +40,29 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
-        txtCourseId = new javax.swing.JTextField();
-        txtTitle = new javax.swing.JTextField();
+        txtStudentId = new javax.swing.JTextField();
+        txtScore = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtFeedback = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnUpdate = new javax.swing.JButton();
         txtClean = new javax.swing.JButton();
         btnBackToMenu = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnAddStudent = new javax.swing.JButton();
+        btnAddMaterial = new javax.swing.JButton();
         btnShowAll = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblQuizzes = new javax.swing.JTable();
+        tblGrades = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Actualizar y manejar inscripciones");
+        jLabel1.setText("Actualizar y manejar calificaciones");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,47 +81,57 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Id de Curso:");
+        jLabel2.setText("Id Estudiante:");
 
-        jLabel3.setText("Title:");
+        jLabel3.setText("Puntaje:");
 
         jLabel4.setText("Id:");
+
+        txtFeedback.setColumns(20);
+        txtFeedback.setRows(5);
+        jScrollPane2.setViewportView(txtFeedback);
+
+        jLabel5.setText("Feedback:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCourseId, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(txtStudentId, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(31, 31, 31))
+                    .addComponent(txtScore, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(195, 195, 195))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(33, 33, 33))
         );
 
         btnUpdate.setText("Actualizar");
@@ -137,11 +143,11 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         btnBackToMenu.setText("Volver al menú");
         btnBackToMenu.addActionListener(this::btnBackToMenuActionPerformed);
 
-        btnDelete.setText("Eliminar Quiz");
+        btnDelete.setText("Eliminar Material");
         btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
-        btnAddStudent.setText("Añadir Quiz");
-        btnAddStudent.addActionListener(this::btnAddStudentActionPerformed);
+        btnAddMaterial.setText("Añadir Actividad");
+        btnAddMaterial.addActionListener(this::btnAddMaterialActionPerformed);
 
         btnShowAll.setText("Mostrar Todo");
         btnShowAll.addActionListener(this::btnShowAllActionPerformed);
@@ -160,7 +166,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(btnShowAll)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddStudent)
+                .addComponent(btnAddMaterial)
                 .addGap(38, 38, 38)
                 .addComponent(btnBackToMenu)
                 .addGap(26, 26, 26))
@@ -174,12 +180,12 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                     .addComponent(txtClean)
                     .addComponent(btnBackToMenu)
                     .addComponent(btnDelete)
-                    .addComponent(btnAddStudent)
+                    .addComponent(btnAddMaterial)
                     .addComponent(btnShowAll))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        tblQuizzes.setModel(new javax.swing.table.DefaultTableModel(
+        tblGrades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -190,19 +196,19 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 "Id", "Names", "Surnames", "Profesión"
             }
         ));
-        tblQuizzes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblGrades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQuizzesMouseClicked(evt);
+                tblGradesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblQuizzes);
+        jScrollPane1.setViewportView(tblGrades);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -247,83 +253,91 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackToMenuActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        Quiz quiz = new Quiz(
+        Grade grade = new Grade(
                 txtId.getText(),
-                txtCourseId.getText(),
-                txtTitle.getText());
+                txtStudentId.getText(),
+                Double.parseDouble(txtScore.getText()),
+                txtFeedback.getText()
+        );
 
-        QuizController controller = new QuizController();
+        GradeController controller = new GradeController();
 
-        controller.update(quiz);
+        controller.update(grade);
 
-        JOptionPane.showMessageDialog(null, "Quiz actualizado exitosamente");
+        JOptionPane.showMessageDialog(null, "Calificación actualizada exitosamente");
 
         clean();
-        loadQuiz();
+        loadGrades();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCleanActionPerformed
         clean();
     }//GEN-LAST:event_txtCleanActionPerformed
 
-    private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
-        FrmAddQuiz frmAdd = new FrmAddQuiz();
+    private void btnAddMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMaterialActionPerformed
+        FrmAddGrade frmAdd = new FrmAddGrade();
         frmAdd.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnAddStudentActionPerformed
+    }//GEN-LAST:event_btnAddMaterialActionPerformed
 
-    private void tblQuizzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuizzesMouseClicked
+    private void tblGradesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGradesMouseClicked
 
-        int row = tblQuizzes.getSelectedRow();
+        int row = tblGrades.getSelectedRow();
 
-        txtId.setText(tblQuizzes.getValueAt(row, 0).toString());
-        txtCourseId.setText(tblQuizzes.getValueAt(row, 1).toString());
-        txtTitle.setText(tblQuizzes.getValueAt(row, 2).toString());
-    }//GEN-LAST:event_tblQuizzesMouseClicked
+        txtId.setText(tblGrades.getValueAt(row, 0).toString());
+        txtStudentId.setText(tblGrades.getValueAt(row, 1).toString());
+        txtScore.setText(tblGrades.getValueAt(row, 2).toString());
+        txtFeedback.setText(tblGrades.getValueAt(row, 3).toString());
+    }//GEN-LAST:event_tblGradesMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        QuizController controller = new QuizController();
+        GradeController controller = new GradeController();
 
         controller.delete(txtId.getText());
 
-        JOptionPane.showMessageDialog(this, "Quiz eliminado correctamente");
+        JOptionPane.showMessageDialog(this, "Calificación eliminada correctamente");
 
-        loadQuiz();
+        loadGrades();
         clean();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        loadQuiz();
+        loadGrades();
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void clean() {
         txtId.setText("");
-        txtCourseId.setText("");
-        txtTitle.setText("");
+        txtStudentId.setText("");
+        txtScore.setText("");
     }
 
-    private void loadQuiz() {
-        
-        QuizController controller = new QuizController();
+    private void loadGrades() {
 
-        ArrayList<Quiz> quizzes = controller.getAllQuizzes();
+        GradeController controller
+                = new GradeController();
 
-        DefaultTableModel model = new DefaultTableModel();
+        ArrayList<Grade> grades
+                = controller.getAllGrades();
+
+        DefaultTableModel model
+                = new DefaultTableModel();
 
         model.addColumn("ID");
-        model.addColumn("Id Curso");
-        model.addColumn("Titulo");
+        model.addColumn("Student ID");
+        model.addColumn("Score");
+        model.addColumn("Feedback");
 
-        for (Quiz quiz : quizzes) {
+        for (Grade grade : grades) {
 
             model.addRow(new Object[]{
-                quiz.getId(),
-                quiz.getCourseId(),
-                quiz.getTitle()
+                grade.getId(),
+                grade.getStudentId(),
+                grade.getScore(),
+                grade.getFeedback()
             });
         }
 
-        tblQuizzes.setModel(model);
+        tblGrades.setModel(model);
     }
 
     /**
@@ -348,11 +362,11 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmManageQuiz().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmManageGrade().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddStudent;
+    private javax.swing.JButton btnAddMaterial;
     private javax.swing.JButton btnBackToMenu;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnShowAll;
@@ -361,15 +375,18 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblQuizzes;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblGrades;
     private javax.swing.JButton txtClean;
-    private javax.swing.JTextField txtCourseId;
+    private javax.swing.JTextArea txtFeedback;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextField txtScore;
+    private javax.swing.JTextField txtStudentId;
     // End of variables declaration//GEN-END:variables
 }

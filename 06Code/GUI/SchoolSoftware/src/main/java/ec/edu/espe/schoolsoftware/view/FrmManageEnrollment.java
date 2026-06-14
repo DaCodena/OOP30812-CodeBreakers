@@ -6,12 +6,10 @@ package ec.edu.espe.schoolsoftware.view;
 
 import ec.edu.espe.schoolsoftware.controller.ActivityController;
 import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
-import ec.edu.espe.schoolsoftware.controller.QuizController;
 import ec.edu.espe.schoolsoftware.controller.StudentController;
 import ec.edu.espe.schoolsoftware.controller.TeacherController;
 import ec.edu.espe.schoolsoftware.model.Activity;
 import ec.edu.espe.schoolsoftware.model.Enrollment;
-import ec.edu.espe.schoolsoftware.model.Quiz;
 import ec.edu.espe.schoolsoftware.model.Student;
 import ec.edu.espe.schoolsoftware.model.Teacher;
 import java.util.ArrayList;
@@ -22,16 +20,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public class FrmManageQuiz extends javax.swing.JFrame {
+public class FrmManageEnrollment extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmManageQuiz.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmManageEnrollment.class.getName());
 
     /**
      * Creates new form FrmAddStudent
      */
-    public FrmManageQuiz() {
+    public FrmManageEnrollment() {
         initComponents();
-        loadQuiz();
+        loadEnrollment();
     }
 
     /**
@@ -48,7 +46,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
         txtCourseId = new javax.swing.JTextField();
-        txtTitle = new javax.swing.JTextField();
+        txtStudentId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -61,7 +59,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         btnShowAll = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblQuizzes = new javax.swing.JTable();
+        tblEnrollments = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,7 +85,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
 
         jLabel2.setText("Id de Curso:");
 
-        jLabel3.setText("Title:");
+        jLabel3.setText("Student Id:");
 
         jLabel4.setText("Id:");
 
@@ -106,7 +104,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                     .addComponent(txtCourseId, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(31, 31, 31))
         );
@@ -123,7 +121,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(195, 195, 195))
         );
@@ -137,10 +135,10 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         btnBackToMenu.setText("Volver al menú");
         btnBackToMenu.addActionListener(this::btnBackToMenuActionPerformed);
 
-        btnDelete.setText("Eliminar Quiz");
+        btnDelete.setText("Eliminar Inscripción");
         btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
-        btnAddStudent.setText("Añadir Quiz");
+        btnAddStudent.setText("Añadir Inscripción");
         btnAddStudent.addActionListener(this::btnAddStudentActionPerformed);
 
         btnShowAll.setText("Mostrar Todo");
@@ -179,7 +177,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        tblQuizzes.setModel(new javax.swing.table.DefaultTableModel(
+        tblEnrollments.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -190,12 +188,12 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 "Id", "Names", "Surnames", "Profesión"
             }
         ));
-        tblQuizzes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblEnrollments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblQuizzesMouseClicked(evt);
+                tblEnrollmentsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblQuizzes);
+        jScrollPane1.setViewportView(tblEnrollments);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -247,19 +245,19 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackToMenuActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        Quiz quiz = new Quiz(
+        Enrollment enrollment = new Enrollment(
                 txtId.getText(),
                 txtCourseId.getText(),
-                txtTitle.getText());
+                txtStudentId.getText());
 
-        QuizController controller = new QuizController();
+        EnrollmentController controller = new EnrollmentController();
 
-        controller.update(quiz);
+        controller.update(enrollment);
 
-        JOptionPane.showMessageDialog(null, "Quiz actualizado exitosamente");
+        JOptionPane.showMessageDialog(null, "Inscripción actualizada exitosamente");
 
         clean();
-        loadQuiz();
+        loadEnrollment();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCleanActionPerformed
@@ -267,63 +265,63 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCleanActionPerformed
 
     private void btnAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentActionPerformed
-        FrmAddQuiz frmAdd = new FrmAddQuiz();
+        FrmAddEnrollment frmAdd = new FrmAddEnrollment();
         frmAdd.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAddStudentActionPerformed
 
-    private void tblQuizzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQuizzesMouseClicked
+    private void tblEnrollmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEnrollmentsMouseClicked
 
-        int row = tblQuizzes.getSelectedRow();
+        int row = tblEnrollments.getSelectedRow();
 
-        txtId.setText(tblQuizzes.getValueAt(row, 0).toString());
-        txtCourseId.setText(tblQuizzes.getValueAt(row, 1).toString());
-        txtTitle.setText(tblQuizzes.getValueAt(row, 2).toString());
-    }//GEN-LAST:event_tblQuizzesMouseClicked
+        txtId.setText(tblEnrollments.getValueAt(row, 0).toString());
+        txtCourseId.setText(tblEnrollments.getValueAt(row, 1).toString());
+        txtStudentId.setText(tblEnrollments.getValueAt(row, 2).toString());
+    }//GEN-LAST:event_tblEnrollmentsMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        QuizController controller = new QuizController();
+        EnrollmentController controller = new EnrollmentController();
 
         controller.delete(txtId.getText());
 
-        JOptionPane.showMessageDialog(this, "Quiz eliminado correctamente");
+        JOptionPane.showMessageDialog(this, "Inscripción eliminada correctamente");
 
-        loadQuiz();
+        loadEnrollment();
         clean();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        loadQuiz();
+        loadEnrollment();
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void clean() {
         txtId.setText("");
         txtCourseId.setText("");
-        txtTitle.setText("");
+        txtStudentId.setText("");
     }
 
-    private void loadQuiz() {
+    private void loadEnrollment() {
         
-        QuizController controller = new QuizController();
+        EnrollmentController controller = new EnrollmentController();
 
-        ArrayList<Quiz> quizzes = controller.getAllQuizzes();
+        ArrayList<Enrollment> enrollments = controller.getAllEnrollments();
 
         DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("ID");
         model.addColumn("Id Curso");
-        model.addColumn("Titulo");
+        model.addColumn("Id Estudiante");
 
-        for (Quiz quiz : quizzes) {
+        for (Enrollment enrollment : enrollments) {
 
             model.addRow(new Object[]{
-                quiz.getId(),
-                quiz.getCourseId(),
-                quiz.getTitle()
+                enrollment.getId(),
+                enrollment.getCourseId(),
+                enrollment.getStudentId()
             });
         }
 
-        tblQuizzes.setModel(model);
+        tblEnrollments.setModel(model);
     }
 
     /**
@@ -348,7 +346,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmManageQuiz().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmManageEnrollment().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -366,10 +364,10 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblQuizzes;
+    private javax.swing.JTable tblEnrollments;
     private javax.swing.JButton txtClean;
     private javax.swing.JTextField txtCourseId;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtTitle;
+    private javax.swing.JTextField txtStudentId;
     // End of variables declaration//GEN-END:variables
 }

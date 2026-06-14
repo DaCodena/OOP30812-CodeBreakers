@@ -13,7 +13,6 @@ import org.bson.Document;
 
 import ec.edu.espe.schoolsoftware.model.Activity;
 
-
 /**
  *
  * @author Odalys Chavez, CodeBreakers, @ESPE
@@ -23,9 +22,9 @@ public class ActivityController implements CrudOperations<Activity> {
     @Override
     public void save(Activity activity) {
 
-        MongoCollection<Document> collection =
-                MongoConnection.getDatabase()
-                .getCollection("activities");
+        MongoCollection<Document> collection
+                = MongoConnection.getDatabase()
+                        .getCollection("activities");
 
         Document document = new Document()
                 .append("_id", activity.getId())
@@ -38,9 +37,9 @@ public class ActivityController implements CrudOperations<Activity> {
     @Override
     public void update(Activity activity) {
 
-        MongoCollection<Document> collection =
-                MongoConnection.getDatabase()
-                .getCollection("activities");
+        MongoCollection<Document> collection
+                = MongoConnection.getDatabase()
+                        .getCollection("activities");
 
         Document update = new Document("$set",
                 new Document("courseId",
@@ -57,9 +56,9 @@ public class ActivityController implements CrudOperations<Activity> {
     @Override
     public void delete(String id) {
 
-        MongoCollection<Document> collection =
-                MongoConnection.getDatabase()
-                .getCollection("activities");
+        MongoCollection<Document> collection
+                = MongoConnection.getDatabase()
+                        .getCollection("activities");
 
         collection.deleteOne(
                 Filters.eq("_id", id));
@@ -68,16 +67,16 @@ public class ActivityController implements CrudOperations<Activity> {
     @Override
     public Activity findById(String id) {
 
-        MongoCollection<Document> collection =
-                MongoConnection.getDatabase()
-                .getCollection("activities");
+        MongoCollection<Document> collection
+                = MongoConnection.getDatabase()
+                        .getCollection("activities");
 
-        Document doc =
-                collection.find(
+        Document doc
+                = collection.find(
                         Filters.eq("_id", id))
                         .first();
 
-        if(doc == null){
+        if (doc == null) {
             return null;
         }
 
@@ -87,19 +86,19 @@ public class ActivityController implements CrudOperations<Activity> {
                 doc.getString("title"));
     }
 
-    public ArrayList<Activity> getAllActivities(){
+    public ArrayList<Activity> getAllActivities() {
 
-        ArrayList<Activity> activities =
-                new ArrayList<>();
+        ArrayList<Activity> activities
+                = new ArrayList<>();
 
-        MongoCollection<Document> collection =
-                MongoConnection.getDatabase()
-                .getCollection("activities");
+        MongoCollection<Document> collection
+                = MongoConnection.getDatabase()
+                        .getCollection("activities");
 
-        FindIterable<Document> docs =
-                collection.find();
+        FindIterable<Document> docs
+                = collection.find();
 
-        for(Document doc : docs){
+        for (Document doc : docs) {
 
             activities.add(
                     new Activity(
@@ -109,5 +108,13 @@ public class ActivityController implements CrudOperations<Activity> {
         }
 
         return activities;
+    }
+
+    public boolean createActivity(
+            Activity activity) {
+
+        save(activity);
+
+        return true;
     }
 }
