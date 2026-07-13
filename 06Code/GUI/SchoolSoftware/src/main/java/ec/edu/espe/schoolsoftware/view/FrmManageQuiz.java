@@ -14,6 +14,7 @@ import ec.edu.espe.schoolsoftware.model.Enrollment;
 import ec.edu.espe.schoolsoftware.model.Quiz;
 import ec.edu.espe.schoolsoftware.model.Student;
 import ec.edu.espe.schoolsoftware.model.Teacher;
+import ec.edu.espe.schoolsoftware.repository.QuizRepository;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,8 @@ import javax.swing.table.DefaultTableModel;
 public class FrmManageQuiz extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmManageQuiz.class.getName());
+    
+    private final QuizController controller;
 
     /**
      * Creates new form FrmAddStudent
@@ -32,6 +35,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     public FrmManageQuiz() {
         initComponents();
         loadQuiz();
+        controller = new QuizController(new QuizRepository());
     }
 
     /**
@@ -252,9 +256,7 @@ public class FrmManageQuiz extends javax.swing.JFrame {
                 txtCourseId.getText(),
                 txtTitle.getText());
 
-        QuizController controller = new QuizController();
-
-        controller.update(quiz);
+        controller.getQuizRepository().update(quiz);
 
         JOptionPane.showMessageDialog(null, "Quiz actualizado exitosamente");
 
@@ -282,9 +284,8 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     }//GEN-LAST:event_tblQuizzesMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        QuizController controller = new QuizController();
 
-        controller.delete(txtId.getText());
+        controller.getQuizRepository().delete(txtId.getText());
 
         JOptionPane.showMessageDialog(this, "Quiz eliminado correctamente");
 
@@ -303,10 +304,8 @@ public class FrmManageQuiz extends javax.swing.JFrame {
     }
 
     private void loadQuiz() {
-        
-        QuizController controller = new QuizController();
 
-        ArrayList<Quiz> quizzes = controller.getAllQuizzes();
+        ArrayList<Quiz> quizzes = controller.getQuizRepository().read();
 
         DefaultTableModel model = new DefaultTableModel();
 

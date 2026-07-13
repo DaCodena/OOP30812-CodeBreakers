@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import ec.edu.espe.schoolsoftware.model.Grade;
+import ec.edu.espe.schoolsoftware.repository.GradeRepository;
 import ec.edu.espe.schoolsoftware.utils.MongoConnection;
 import java.util.ArrayList;
 import org.bson.Document;
@@ -13,145 +14,38 @@ import org.bson.Document;
  *
  * @author Odalys Chavez, CodeBreakers, @ESPE
  */
-public class GradeController implements CrudOperations<Grade> {
+public class GradeController{
 
-    @Override
-    public void save(Grade grade) {
+    private GradeRepository gradeRepository;
 
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("grades");
-
-        Document document = new Document()
-                .append("_id", grade.getId())
-                .append("studentId", grade.getStudentId())
-                .append("score", grade.getScore())
-                .append("feedback", grade.getFeedback());
-
-        collection.insertOne(document);
+    public GradeController() {
+        gradeRepository = new GradeRepository();
     }
 
-    @Override
-    public void update(Grade grade) {
+    public boolean assignGrade(Grade grade) {
 
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("grades");
-
-        Document update = new Document("$set",
-                new Document("studentId",
-                        grade.getStudentId())
-                        .append("score",
-                                grade.getScore())
-                        .append("feedback",
-                                grade.getFeedback()));
-
-        collection.updateOne(
-                Filters.eq("_id", grade.getId()),
-                update);
-    }
-
-    @Override
-    public void delete(String id) {
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("grades");
-
-        collection.deleteOne(
-                Filters.eq("_id", id));
-    }
-
-    @Override
-    public Grade findById(String id) {
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("grades");
-
-        Document doc
-                = collection.find(
-                        Filters.eq("_id", id))
-                        .first();
-
-        if (doc == null) {
-            return null;
-        }
-
-        return new Grade(
-                doc.getString("_id"),
-                doc.getString("studentId"),
-                doc.getDouble("score"),
-                doc.getString("feedback"));
-    }
-
-    public ArrayList<Grade> getAllGrades() {
-
-        ArrayList<Grade> grades
-                = new ArrayList<>();
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("grades");
-
-        FindIterable<Document> documents
-                = collection.find();
-
-        for (Document doc : documents) {
-
-            Grade grade = new Grade(
-                    doc.getString("_id"),
-                    doc.getString("studentId"),
-                    doc.getDouble("score"),
-                    doc.getString("feedback"));
-
-            grades.add(grade);
-        }
-
-        return grades;
-    }
-
-    public boolean assignGrade(
-            Grade grade) {
-
-        save(grade);
+        gradeRepository.save(grade);
 
         return true;
     }
 
     public double calculateAverageGrade() {
 
-        ArrayList<Grade> grades
-                = getAllGrades();
+        ArrayList<Grade> grades = gradeRepository.read();
 
         double total = 0;
 
         for (Grade grade : grades) {
-
             total += grade.getScore();
 
         }
 
-        return grades.isEmpty()
-                ? 0
-                : total / grades.size();
+        return grades.isEmpty() ? 0 : total / grades.size();
     }
 
-    public boolean detectLowPerformance(
-            String studentId) {
+    public boolean detectLowPerformance(String studentId) {
 
-        ArrayList<Grade> grades
-                = getAllGrades();
+        ArrayList<Grade> grades = gradeRepository.read();
 
         double total = 0;
         int count = 0;
@@ -177,8 +71,7 @@ public class GradeController implements CrudOperations<Grade> {
     public void generateFeedback(
             String gradeId) {
 
-        Grade grade
-                = findById(gradeId);
+        Grade grade = gradeRepository.findById(gradeId);
 
         String feedback;
 
@@ -201,6 +94,16 @@ public class GradeController implements CrudOperations<Grade> {
 
         grade.setFeedback(feedback);
 
-        update(grade);
+        gradeRepository.update(grade);
     }
+
+    public GradeRepository getGradeRepository() {
+        return gradeRepository;
+    }
+
+    public void setGradeRepository(GradeRepository gradeRepository) {
+        this.gradeRepository = gradeRepository;
+    }
+    
+    
 }

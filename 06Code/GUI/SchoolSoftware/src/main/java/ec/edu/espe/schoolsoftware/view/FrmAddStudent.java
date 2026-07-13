@@ -311,7 +311,7 @@ public class FrmAddStudent extends javax.swing.JFrame {
         Student student = new Student(id, names, surnames, day, month, year);
 
         StudentController studentController = new StudentController();
-        studentController.save(student);
+        studentController.getStudentRepository().save(student);
 
         User user = new User(student.getId(), txtPassword.getText(), "STUDENT");
 

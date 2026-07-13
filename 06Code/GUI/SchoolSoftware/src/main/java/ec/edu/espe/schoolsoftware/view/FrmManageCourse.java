@@ -289,7 +289,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
         );
         
         CourseController controller = new CourseController();
-        controller.update(course);
+        controller.getCourseRepository().update(course);
 
         JOptionPane.showMessageDialog(null, "Curso actualizado exitosamente");
 
@@ -320,7 +320,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
         String id = txtCourseId.getText();
         
         CourseController controller = new CourseController();
-        controller.delete(id);
+        controller.getCourseRepository().delete(id);
 
         JOptionPane.showMessageDialog(this, "Curso eliminado correctamente");
 
@@ -336,7 +336,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
         
         if (rbtnId.isSelected()) {
             
-            Course course = controller.findById(txtSearch.getText());
+            Course course = controller.getCourseRepository().findById(txtSearch.getText());
             
             if (course != null) {
                 model.addRow(new Object[]{
@@ -348,7 +348,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
 
         } else {
 
-            ArrayList<Course> courses = controller.findByName(txtSearch.getText());
+            ArrayList<Course> courses = controller.getCourseRepository().findByName(txtSearch.getText());
             for (Course course : courses) {
 
                 model.addRow(new Object[]{
@@ -376,7 +376,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
     private void loadCourses() {
 
         CourseController controller = new CourseController();
-        ArrayList<Course> courses = controller.getAllCourses();
+        ArrayList<Course> courses = controller.getCourseRepository().read();
         DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("ID");
@@ -397,7 +397,7 @@ public class FrmManageCourse extends javax.swing.JFrame {
 
         TeacherController controller = new TeacherController();
 
-        ArrayList<Teacher> teachers = controller.getAllTeachers();
+        ArrayList<Teacher> teachers = controller.getTeacherRepository().read();
 
         cmbTeacher.removeAllItems();
 

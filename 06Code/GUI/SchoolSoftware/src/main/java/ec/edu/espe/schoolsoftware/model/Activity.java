@@ -8,27 +8,10 @@ package ec.edu.espe.schoolsoftware.model;
  *
  * @author Odalys Chavez, CodeBreakers, @ESPE
  */
-public class Activity {
-
-    private String id;
-    private String courseId;
-    private String title;
+public class Activity extends AssessmentTool{
 
     public Activity(String id, String courseId, String title) {
-        this.id = id;
-        this.courseId = courseId;
-        this.title = title;
+        super(id, courseId, title);
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

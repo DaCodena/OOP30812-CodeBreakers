@@ -211,7 +211,7 @@ public class FrmAddCourse extends javax.swing.JFrame {
         Course course = new Course(id, names, teacherId);
         CourseController courseController = new CourseController();
 
-        courseController.save(course);
+        courseController.getCourseRepository().save(course);
 
         JOptionPane.showMessageDialog(null, "Guardado exitosamente");
 
@@ -242,7 +242,7 @@ public class FrmAddCourse extends javax.swing.JFrame {
 
         TeacherController controller = new TeacherController();
 
-        ArrayList<Teacher> teachers = controller.getAllTeachers();
+        ArrayList<Teacher> teachers = controller.getTeacherRepository().read();
 
         cmbTeacher.removeAllItems();
 

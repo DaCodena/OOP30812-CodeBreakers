@@ -8,27 +8,11 @@ package ec.edu.espe.schoolsoftware.model;
  *
  * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public class Quiz {
-
-    private String id;
-    private String courseId;
-    private String title;
+public class Quiz extends AssessmentTool{
 
     public Quiz(String id, String courseId, String title) {
-        this.id = id;
-        this.courseId = courseId;
-        this.title = title;
+        super(id, courseId, title);
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 }

@@ -181,7 +181,7 @@ public class FrmAddMaterial extends javax.swing.JFrame {
                         txtFileType.getText());
 
         MaterialController controller = new MaterialController();
-        controller.save(material);
+        controller.getMaterialRepository().save(material);
 
         JOptionPane.showMessageDialog(this,"material guardado");
     }//GEN-LAST:event_btnAddActionPerformed

@@ -8,7 +8,10 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import ec.edu.espe.schoolsoftware.model.Course;
 import ec.edu.espe.schoolsoftware.model.Quiz;
+import ec.edu.espe.schoolsoftware.repository.ICrudOperations;
+import ec.edu.espe.schoolsoftware.repository.QuizRepository;
 import ec.edu.espe.schoolsoftware.utils.MongoConnection;
 import java.util.ArrayList;
 import org.bson.Document;
@@ -17,114 +20,24 @@ import org.bson.Document;
  *
  * @author Odalys Chavez, CodeBreakers, @ESPE
  */
-public class QuizController implements CrudOperations<Quiz> {
+public class QuizController implements ICreate<Quiz> {
 
-    @Override
-    public void save(Quiz quiz) {
+    private ICrudOperations<Quiz> quizRepository;
 
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("quizzes");
-
-        Document document = new Document()
-                .append("_id", quiz.getId())
-                .append("courseId", quiz.getCourseId())
-                .append("title", quiz.getTitle());
-
-        collection.insertOne(document);
+    public QuizController(ICrudOperations<Quiz> quizRepository) {
+        this.quizRepository = quizRepository;
     }
 
     @Override
-    public void update(Quiz quiz) {
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("quizzes");
-
-        Document update = new Document("$set",
-                new Document("courseId",
-                        quiz.getCourseId())
-                        .append("title",
-                                quiz.getTitle()));
-
-        collection.updateOne(
-                Filters.eq("_id", quiz.getId()),
-                update);
+    public Quiz create(Course course) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void delete(String id) {
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("quizzes");
-
-        collection.deleteOne(
-                Filters.eq("_id", id));
+    public ICrudOperations<Quiz> getQuizRepository() {
+        return quizRepository;
     }
 
-    @Override
-    public Quiz findById(String id) {
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("quizzes");
-
-        Document doc
-                = collection.find(
-                        Filters.eq("_id", id))
-                        .first();
-
-        if (doc == null) {
-            return null;
-        }
-
-        return new Quiz(
-                doc.getString("_id"),
-                doc.getString("courseId"),
-                doc.getString("title"));
-    }
-
-    public ArrayList<Quiz> getAllQuizzes() {
-
-        ArrayList<Quiz> quizzes
-                = new ArrayList<>();
-
-        MongoDatabase database
-                = MongoConnection.getDatabase();
-
-        MongoCollection<Document> collection
-                = database.getCollection("quizzes");
-
-        FindIterable<Document> documents
-                = collection.find();
-
-        for (Document doc : documents) {
-
-            Quiz quiz = new Quiz(
-                    doc.getString("_id"),
-                    doc.getString("courseId"),
-                    doc.getString("title"));
-
-            quizzes.add(quiz);
-        }
-
-        return quizzes;
-    }
-
-    public boolean createQuiz(
-            Quiz quiz) {
-
-        save(quiz);
-
-        return true;
+    public void setQuizRepository(ICrudOperations<Quiz> quizRepository) {
+        this.quizRepository = quizRepository;
     }
 }

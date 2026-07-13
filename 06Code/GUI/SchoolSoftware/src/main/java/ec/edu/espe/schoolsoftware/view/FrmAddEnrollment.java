@@ -181,7 +181,7 @@ public class FrmAddEnrollment extends javax.swing.JFrame {
                         txtStudentId.getText());
 
         EnrollmentController controller = new EnrollmentController();
-        controller.save(enrollment);
+        controller.getEnrollmentRepository().save(enrollment);
 
         JOptionPane.showMessageDialog(this,"Inscripción guardada");
     }//GEN-LAST:event_btnAddActionPerformed

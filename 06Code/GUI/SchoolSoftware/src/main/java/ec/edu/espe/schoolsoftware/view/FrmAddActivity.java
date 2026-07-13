@@ -180,7 +180,7 @@ public class FrmAddActivity extends javax.swing.JFrame {
 
         ActivityController controller = new ActivityController();
 
-        controller.save(activity);
+        controller.getActivityRepository().save(activity);
 
         JOptionPane.showMessageDialog(this,"Actividad guardada");
     }//GEN-LAST:event_btnAddActionPerformed

@@ -262,7 +262,7 @@ public class FrmManageGrade extends javax.swing.JFrame {
 
         GradeController controller = new GradeController();
 
-        controller.update(grade);
+        controller.getGradeRepository().update(grade);
 
         JOptionPane.showMessageDialog(null, "Calificación actualizada exitosamente");
 
@@ -293,7 +293,7 @@ public class FrmManageGrade extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         GradeController controller = new GradeController();
 
-        controller.delete(txtId.getText());
+        controller.getGradeRepository().delete(txtId.getText());
 
         JOptionPane.showMessageDialog(this, "Calificación eliminada correctamente");
 
@@ -317,7 +317,7 @@ public class FrmManageGrade extends javax.swing.JFrame {
                 = new GradeController();
 
         ArrayList<Grade> grades
-                = controller.getAllGrades();
+                = controller.getGradeRepository().read();
 
         DefaultTableModel model
                 = new DefaultTableModel();

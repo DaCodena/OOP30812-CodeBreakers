@@ -268,7 +268,7 @@ public class FrmAddTeacher extends javax.swing.JFrame {
         Teacher teacher = new Teacher(id, names, surnames, profession);
         TeacherController teacherController = new TeacherController();
 
-        teacherController.save(teacher);
+        teacherController.getTeacherRepository().save(teacher);
 
         User user = new User(teacher.getId(), txtPassword.getText(), "TEACHER");
 

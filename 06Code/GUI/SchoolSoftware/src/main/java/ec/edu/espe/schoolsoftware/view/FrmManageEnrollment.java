@@ -252,7 +252,7 @@ public class FrmManageEnrollment extends javax.swing.JFrame {
 
         EnrollmentController controller = new EnrollmentController();
 
-        controller.update(enrollment);
+        controller.getEnrollmentRepository().update(enrollment);
 
         JOptionPane.showMessageDialog(null, "Inscripción actualizada exitosamente");
 
@@ -282,7 +282,7 @@ public class FrmManageEnrollment extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         EnrollmentController controller = new EnrollmentController();
 
-        controller.delete(txtId.getText());
+        controller.getEnrollmentRepository().delete(txtId.getText());
 
         JOptionPane.showMessageDialog(this, "Inscripción eliminada correctamente");
 
@@ -304,7 +304,7 @@ public class FrmManageEnrollment extends javax.swing.JFrame {
         
         EnrollmentController controller = new EnrollmentController();
 
-        ArrayList<Enrollment> enrollments = controller.getAllEnrollments();
+        ArrayList<Enrollment> enrollments = controller.getEnrollmentRepository().read();
 
         DefaultTableModel model = new DefaultTableModel();
 

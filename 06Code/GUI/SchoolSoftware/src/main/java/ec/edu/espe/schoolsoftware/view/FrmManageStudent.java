@@ -337,7 +337,7 @@ public class FrmManageStudent extends javax.swing.JFrame {
         );
 
         StudentController controller = new StudentController();
-        controller.update(student);
+        controller.getStudentRepository().update(student);
 
         JOptionPane.showMessageDialog(null, "Estudiante actualizado exitosamente");
 
@@ -371,8 +371,9 @@ public class FrmManageStudent extends javax.swing.JFrame {
         String id = txtStudentId.getText();
 
         StudentController controller = new StudentController();
+        
+        controller.getStudentRepository().delete(id);
 
-        controller.delete(id);
 
         JOptionPane.showMessageDialog(this, "Estudiado eliminado correctamente");
 
@@ -388,7 +389,7 @@ public class FrmManageStudent extends javax.swing.JFrame {
 
         if (rbtnId.isSelected()) {
 
-            Student student = controller.findById(txtSearch.getText());
+            Student student = controller.getStudentRepository().findById(txtSearch.getText());
 
             if (student != null) {
                 model.addRow(new Object[]{
@@ -403,7 +404,7 @@ public class FrmManageStudent extends javax.swing.JFrame {
 
         } else {
 
-            ArrayList<Student> students = controller.findBySurname(txtSearch.getText());
+            ArrayList<Student> students = controller.getStudentRepository().findBySurname(txtSearch.getText());
             for (Student student : students) {
 
                 model.addRow(new Object[]{
@@ -438,7 +439,7 @@ public class FrmManageStudent extends javax.swing.JFrame {
     private void loadStudents() {
 
         StudentController controller = new StudentController();
-        ArrayList<Student> students = controller.getAllStudents();
+        ArrayList<Student> students = controller.getStudentRepository().read();
         DefaultTableModel model = new DefaultTableModel();
 
         model.addColumn("ID");

@@ -39,4 +39,8 @@ public class LoginController {
 
         return user;
     }
+    
+    public void logout(){
+        
+    }
 }

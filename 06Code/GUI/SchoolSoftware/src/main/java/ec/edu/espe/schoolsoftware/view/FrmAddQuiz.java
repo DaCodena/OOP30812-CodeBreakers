@@ -4,9 +4,10 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
-
 import ec.edu.espe.schoolsoftware.controller.QuizController;
 import ec.edu.espe.schoolsoftware.model.Quiz;
+import ec.edu.espe.schoolsoftware.repository.ICrudOperations;
+import ec.edu.espe.schoolsoftware.repository.QuizRepository;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,11 +18,14 @@ public class FrmAddQuiz extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAddQuiz.class.getName());
 
+    private final QuizController controller;
+
     /**
      * Creates new form FrmAddActivity
      */
     public FrmAddQuiz() {
         initComponents();
+        controller = new QuizController(new QuizRepository());
     }
 
     /**
@@ -174,15 +178,14 @@ public class FrmAddQuiz extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         Quiz quiz = new Quiz(
-                        txtId.getText(),
-                        txtCourseId.getText(),
-                        txtTitle.getText()
+                txtId.getText(),
+                txtCourseId.getText(),
+                txtTitle.getText()
         );
 
-        QuizController controller = new QuizController();
-        controller.save(quiz);
+        controller.getQuizRepository().save(quiz);
 
-        JOptionPane.showMessageDialog(this,"Quiz guardado");
+        JOptionPane.showMessageDialog(this, "Quiz guardado");
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed

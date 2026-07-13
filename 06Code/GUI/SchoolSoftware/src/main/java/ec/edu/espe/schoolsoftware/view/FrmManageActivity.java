@@ -250,7 +250,7 @@ public class FrmManageActivity extends javax.swing.JFrame {
 
         ActivityController controller = new ActivityController();
 
-        controller.update(activity);
+        controller.getActivityRepository().update(activity);
 
         JOptionPane.showMessageDialog(null, "Actividad actualizado exitosamente");
 
@@ -280,7 +280,7 @@ public class FrmManageActivity extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         ActivityController controller = new ActivityController();
 
-        controller.delete(txtId.getText());
+        controller.getActivityRepository().delete(txtId.getText());
 
         loadActivities();
         JOptionPane.showMessageDialog(this, "Estudiado eliminado correctamente");
@@ -303,7 +303,7 @@ public class FrmManageActivity extends javax.swing.JFrame {
 
         ActivityController controller = new ActivityController();
 
-        ArrayList<Activity> activities = controller.getAllActivities();
+        ArrayList<Activity> activities = controller.getActivityRepository().read();
 
         DefaultTableModel model = new DefaultTableModel();
 

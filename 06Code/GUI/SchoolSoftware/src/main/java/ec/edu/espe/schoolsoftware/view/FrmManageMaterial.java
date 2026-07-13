@@ -247,7 +247,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
 
         MaterialController controller = new MaterialController();
 
-        controller.update(material);
+        controller.getMaterialRepository().update(material);
 
         JOptionPane.showMessageDialog(null, "Inscripción actualizada exitosamente");
 
@@ -277,7 +277,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         MaterialController controller = new MaterialController();
 
-        controller.delete(txtId.getText());
+        controller.getMaterialRepository().delete(txtId.getText());
 
         JOptionPane.showMessageDialog(this, "Material eliminado correctamente");
 
@@ -299,7 +299,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
         
         MaterialController controller = new MaterialController();
 
-        ArrayList<Material> materials = controller.getAllMaterials();
+        ArrayList<Material> materials = controller.getMaterialRepository().read();
 
         DefaultTableModel model = new DefaultTableModel();
 

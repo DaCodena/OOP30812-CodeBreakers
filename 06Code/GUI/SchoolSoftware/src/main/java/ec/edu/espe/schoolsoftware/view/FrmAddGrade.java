@@ -199,7 +199,7 @@ public class FrmAddGrade extends javax.swing.JFrame {
         GradeController controller
                 = new GradeController();
 
-        controller.save(grade);
+        controller.getGradeRepository().save(grade);
 
         JOptionPane.showMessageDialog(this, "Calificación guardado");
     }//GEN-LAST:event_btnAddActionPerformed
