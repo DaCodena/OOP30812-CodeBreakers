@@ -8,6 +8,7 @@ package ec.edu.espe.schoolsoftware.view;
 import ec.edu.espe.schoolsoftware.controller.MaterialController;
 
 import ec.edu.espe.schoolsoftware.model.Material;
+import ec.edu.espe.schoolsoftware.repository.MaterialRepository;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,12 +18,18 @@ import javax.swing.JOptionPane;
 public class FrmAddMaterial extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAddMaterial.class.getName());
+    
+    //Cambios
+    private final MaterialController materialController;
 
     /**
      * Creates new form FrmAddActivity
      */
     public FrmAddMaterial() {
         initComponents();
+        
+        //Se inicializa dentro del constructor del Frm
+        materialController = new MaterialController(new MaterialRepository());
     }
 
     /**
@@ -180,9 +187,14 @@ public class FrmAddMaterial extends javax.swing.JFrame {
                         txtTitle.getText(),
                         txtFileType.getText());
 
+        /*Codigo antiguo 
         MaterialController controller = new MaterialController();
         controller.getMaterialRepository().save(material);
-
+        */ 
+        
+        //Cambio en el controller
+        materialController.getMaterialRepository().save(material);
+        
         JOptionPane.showMessageDialog(this,"material guardado");
     }//GEN-LAST:event_btnAddActionPerformed
 
