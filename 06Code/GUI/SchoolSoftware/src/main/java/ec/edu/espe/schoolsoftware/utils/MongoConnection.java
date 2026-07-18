@@ -14,24 +14,31 @@ import com.mongodb.client.MongoDatabase;
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class MongoConnection {
-    private static final String URI =
-            "mongodb+srv://daniel:daniel1234@cluster0.zfwd5wx.mongodb.net/?appName=Cluster0";
-
-    private static final String DATABASE = "EducationalApp";
     private static MongoConnection instance;
 
     private MongoClient client;
     private MongoDatabase database;
+
     private MongoConnection() {
-        client = MongoClients.create(URI);
-        database = client.getDatabase(DATABASE);
+
+        Configuration configuration = new Configuration();
+
+        client = MongoClients.create(configuration.getUri());
+
+        database = client.getDatabase(configuration.getDatabase());
+
+        System.out.println("Connected to MongoDB");
     }
-    public static synchronized MongoConnection getInstance() {
+
+    public static MongoConnection getInstance() {
+
         if (instance == null) {
             instance = new MongoConnection();
         }
+
         return instance;
     }
+
     public MongoDatabase getDatabase() {
         return database;
     }

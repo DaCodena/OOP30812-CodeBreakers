@@ -52,6 +52,7 @@ ec\edu\espe\schoolsoftware\view\FrmAddStudent$1.class
 ec\edu\espe\schoolsoftware\controller\LoginController.class
 ec\edu\espe\schoolsoftware\model\Quiz.class
 ec\edu\espe\schoolsoftware\view\FrmManageActivity$1.class
+ec\edu\espe\schoolsoftware\utils\Configuration.class
 ec\edu\espe\schoolsoftware\view\FrmManageMaterial$1.class
 ec\edu\espe\schoolsoftware\model\AssessmentTool.class
 ec\edu\espe\schoolsoftware\view\FrmGuide.class
