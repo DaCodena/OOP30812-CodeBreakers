@@ -17,7 +17,7 @@ public abstract class BaseRepository {
     protected MongoDatabase database;
 
     public BaseRepository() {
-        database = MongoConnection.getDatabase();
+        database = MongoConnection.getInstance().getDatabase();
     }
     
     protected MongoCollection<Document> getCollection(String collectionName){

@@ -7,6 +7,7 @@ package ec.edu.espe.schoolsoftware.view;
 
 import ec.edu.espe.schoolsoftware.controller.MaterialController;
 import ec.edu.espe.schoolsoftware.model.Material;
+import ec.edu.espe.schoolsoftware.repository.MaterialRepository;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -245,7 +246,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
                 txtTitle.getText(),
                 txtFileType.getText());
 
-        MaterialController controller = new MaterialController();
+        MaterialController controller = new MaterialController(new MaterialRepository());
 
         controller.getMaterialRepository().update(material);
 
@@ -275,7 +276,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
     }//GEN-LAST:event_tblMaterialsMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        MaterialController controller = new MaterialController();
+        MaterialController controller = new MaterialController(new MaterialRepository());
 
         controller.getMaterialRepository().delete(txtId.getText());
 
@@ -297,7 +298,7 @@ public class FrmManageMaterial extends javax.swing.JFrame {
 
     private void loadMaterial() {
         
-        MaterialController controller = new MaterialController();
+        MaterialController controller = new MaterialController(new MaterialRepository());
 
         ArrayList<Material> materials = controller.getMaterialRepository().read();
 

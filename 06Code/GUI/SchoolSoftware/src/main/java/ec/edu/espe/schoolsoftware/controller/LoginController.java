@@ -20,7 +20,7 @@ public class LoginController {
 
     public User login(String username, String password) {
 
-        MongoDatabase database = MongoConnection.getDatabase();
+        MongoDatabase database = MongoConnection.getInstance().getDatabase();
 
         MongoCollection<Document> collection = database.getCollection("users");
 

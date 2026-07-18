@@ -18,7 +18,7 @@ public class UserController {
 
     public void save(User user) {
 
-        MongoDatabase database = MongoConnection.getDatabase();
+        MongoDatabase database = MongoConnection.getInstance().getDatabase();
 
         MongoCollection<Document> collection = database.getCollection("users");
 
