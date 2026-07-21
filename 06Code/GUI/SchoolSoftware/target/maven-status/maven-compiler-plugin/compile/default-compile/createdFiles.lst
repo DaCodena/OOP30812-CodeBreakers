@@ -50,6 +50,7 @@ ec\edu\espe\schoolsoftware\view\FrmAbout.class
 ec\edu\espe\schoolsoftware\view\FrmManageStudent$1.class
 ec\edu\espe\schoolsoftware\view\FrmAddStudent$1.class
 ec\edu\espe\schoolsoftware\controller\LoginController.class
+ec\edu\espe\schoolsoftware\view\FrmMyCourses.class
 ec\edu\espe\schoolsoftware\model\Quiz.class
 ec\edu\espe\schoolsoftware\view\FrmManageActivity$1.class
 ec\edu\espe\schoolsoftware\utils\Configuration.class

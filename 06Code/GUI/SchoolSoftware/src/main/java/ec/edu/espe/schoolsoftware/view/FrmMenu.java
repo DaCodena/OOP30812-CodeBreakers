@@ -6,6 +6,7 @@ package ec.edu.espe.schoolsoftware.view;
 
 import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
 import ec.edu.espe.schoolsoftware.controller.GradeController;
+import ec.edu.espe.schoolsoftware.controller.LoginController;
 import ec.edu.espe.schoolsoftware.model.Session;
 import javax.swing.JOptionPane;
 
@@ -23,7 +24,7 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
 
-        String role = Session.currentUser.getRole();
+        String role = Session.getCurrentUser().getRole();
 
         switch (role) {
 
@@ -260,7 +261,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddStudentActionPerformed
-        // TODO add your handling code here:
+        
         FrmAddStudent frmStudent = new FrmAddStudent();
         frmStudent.setVisible(true);
         this.setVisible(false);
@@ -273,7 +274,8 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_itmUpdateStudentActionPerformed
 
     private void itmLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmLogOutActionPerformed
-        Session.currentUser = null;
+        LoginController loginController = new LoginController();
+        loginController.logout();
 
         FrmLogin login = new FrmLogin();
 

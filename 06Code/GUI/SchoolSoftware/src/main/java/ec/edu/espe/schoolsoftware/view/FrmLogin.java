@@ -115,7 +115,7 @@ public class FrmLogin extends javax.swing.JFrame {
             return;
         }
         
-        Session.currentUser = user;
+        Session.setCurrentUser(user);
 
         FrmMenu menu = new FrmMenu();
 

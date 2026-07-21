@@ -9,7 +9,18 @@ package ec.edu.espe.schoolsoftware.model;
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class Session {
-    
-    public static User currentUser;
-    
+
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
+    public static void logout() {
+        currentUser = null;
+    }
 }
