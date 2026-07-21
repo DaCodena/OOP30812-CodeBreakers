@@ -69,6 +69,7 @@ public class FrmMenu extends javax.swing.JFrame {
         itmAddEnrollment = new javax.swing.JMenuItem();
         itmUpdateEnrollment = new javax.swing.JMenuItem();
         menuCourses = new javax.swing.JMenu();
+        itmMyCourses = new javax.swing.JMenuItem();
         menuActivities = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
         itmAddActivity = new javax.swing.JMenuItem();
@@ -158,6 +159,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuBar1.add(menuManage);
 
         menuCourses.setText("Mis Cursos");
+
+        itmMyCourses.setText("Mis Cursos");
+        itmMyCourses.addActionListener(this::itmMyCoursesActionPerformed);
+        menuCourses.add(itmMyCourses);
+
         jMenuBar1.add(menuCourses);
 
         menuActivities.setText("Actividades");
@@ -261,7 +267,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmAddStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmAddStudentActionPerformed
-        
+
         FrmAddStudent frmStudent = new FrmAddStudent();
         frmStudent.setVisible(true);
         this.setVisible(false);
@@ -401,6 +407,11 @@ public class FrmMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_itmGuideActionPerformed
 
+    private void itmMyCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmMyCoursesActionPerformed
+        FrmMyCourses frm = new FrmMyCourses();
+        frm.setVisible(true);
+    }//GEN-LAST:event_itmMyCoursesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -440,6 +451,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmGuide;
     private javax.swing.JMenuItem itmLogOut;
     private javax.swing.JMenuItem itmLowPerformance;
+    private javax.swing.JMenuItem itmMyCourses;
     private javax.swing.JMenuItem itmReports;
     private javax.swing.JMenuItem itmStatistics;
     private javax.swing.JMenuItem itmUpdateActivities;
