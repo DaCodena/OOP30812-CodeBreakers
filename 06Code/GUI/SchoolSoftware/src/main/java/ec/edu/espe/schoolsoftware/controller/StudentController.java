@@ -12,14 +12,17 @@ import org.bson.Document;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class StudentController {
 
     private StudentRepository studentRepository;
 
+    public StudentController(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public StudentController() {
-        studentRepository = new StudentRepository();
     }
 
     public StudentRepository getStudentRepository() {
@@ -29,5 +32,5 @@ public class StudentController {
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    
+
 }

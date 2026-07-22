@@ -12,14 +12,17 @@ import org.bson.Document;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public class GradeController{
+public class GradeController {
 
     private GradeRepository gradeRepository;
 
+    public GradeController(GradeRepository gradeRepository) {
+        this.gradeRepository = gradeRepository;
+    }
+
     public GradeController() {
-        gradeRepository = new GradeRepository();
     }
 
     public boolean assignGrade(Grade grade) {
@@ -37,7 +40,6 @@ public class GradeController{
 
         for (Grade grade : grades) {
             total += grade.getScore();
-
         }
 
         return grades.isEmpty() ? 0 : total / grades.size();
@@ -68,27 +70,22 @@ public class GradeController{
         return total / count < 70;
     }
 
-    public void generateFeedback(
-            String gradeId) {
-
+    public void generateFeedback(String gradeId) {
         Grade grade = gradeRepository.findById(gradeId);
 
         String feedback;
 
         if (grade.getScore() >= 90) {
 
-            feedback
-                    = "Excellent performance";
+            feedback = "Excellent performance";
 
         } else if (grade.getScore() >= 70) {
 
-            feedback
-                    = "Good performance";
+            feedback = "Good performance";
 
         } else {
 
-            feedback
-                    = "Needs improvement";
+            feedback = "Needs improvement";
 
         }
 
@@ -104,6 +101,5 @@ public class GradeController{
     public void setGradeRepository(GradeRepository gradeRepository) {
         this.gradeRepository = gradeRepository;
     }
-    
-    
+
 }

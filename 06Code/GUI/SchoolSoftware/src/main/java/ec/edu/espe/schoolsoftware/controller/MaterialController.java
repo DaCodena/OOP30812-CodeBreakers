@@ -14,43 +14,37 @@ import org.bson.Document;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class MaterialController implements ICreate<Material> {
-    
-    //Constructor actualizado
+
     private ICrudOperations<Material> materialRepository;
-    
-    //Cambia el parametro y constructor
+
     public MaterialController(ICrudOperations<Material> materialRepository) {
         this.materialRepository = materialRepository;
     }
-    
-    //Codigo antiguo
-    /*
-    private MaterialRepository materialRepository;
 
     public MaterialController() {
-        materialRepository = new MaterialRepository();
     }
-*/
+
     @Override
     public Material create(Course course) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    public void download(Material material){
+
+    public void download(Material material) {
         //TODO algorithm to download file
     }
-    
-    //Antes retornaba MaterialController
+
+    //Getter y Setter orientados a la interfaz (ICrudOperations)
     public ICrudOperations<Material> getMaterialRepository() {
         return materialRepository;
     }
 
-    public void setMaterialRepository(MaterialRepository materialRepository) {
+    public void setMaterialRepository(ICrudOperations<Material> materialRepository) {
         this.materialRepository = materialRepository;
     }
+
     
     public ArrayList<Material> findByCourseId(String courseId){
         ArrayList<Material> materials = new ArrayList<>();
@@ -61,5 +55,6 @@ public class MaterialController implements ICreate<Material> {
         
         return materials;
     }
+
 
 }

@@ -17,13 +17,17 @@ import org.bson.Document;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class CourseController {
+
     private CourseRepository courseRepository;
 
+    public CourseController(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
+    }
+
     public CourseController() {
-        courseRepository = new CourseRepository();
     }
 
     public CourseRepository getCourseRepository() {
@@ -33,6 +37,4 @@ public class CourseController {
     public void setCourseRepository(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
-    
- 
 }

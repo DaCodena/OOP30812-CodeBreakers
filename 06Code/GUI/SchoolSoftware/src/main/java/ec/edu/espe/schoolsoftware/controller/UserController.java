@@ -12,7 +12,7 @@ import org.bson.Document;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class UserController {
 
