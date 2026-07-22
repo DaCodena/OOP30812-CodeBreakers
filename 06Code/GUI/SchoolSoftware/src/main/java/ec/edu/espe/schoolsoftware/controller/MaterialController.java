@@ -25,6 +25,7 @@ public class MaterialController implements ICreate<Material> {
     }
 
     public MaterialController() {
+        this.materialRepository = new MaterialRepository();
     }
 
     @Override

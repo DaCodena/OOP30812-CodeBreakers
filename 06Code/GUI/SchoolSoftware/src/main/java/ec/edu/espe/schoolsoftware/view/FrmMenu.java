@@ -27,11 +27,11 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
 
-        MenuStrategy strategy =
-            MenuStrategyFactory.create(
-                    Session.getCurrentUser());
+        MenuStrategy strategy
+                = MenuStrategyFactory.create(
+                        Session.getCurrentUser());
 
-    strategy.configureMenu(this);
+        strategy.configureMenu(this);
     }
 
     /**
@@ -75,12 +75,12 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         itmAddMaterial = new javax.swing.JMenuItem();
         itmUpdateMaterials = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
+        menuReports = new javax.swing.JMenu();
         itmStatistics = new javax.swing.JMenuItem();
         itmReports = new javax.swing.JMenuItem();
-        jMenu11 = new javax.swing.JMenu();
+        menuAlerts = new javax.swing.JMenu();
         itmLowPerformance = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        menuHelp = new javax.swing.JMenu();
         itmAbout = new javax.swing.JMenuItem();
         itmGuide = new javax.swing.JMenuItem();
 
@@ -210,37 +210,37 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(menuActivities);
 
-        jMenu10.setText("Reportes");
+        menuReports.setText("Reportes");
 
         itmStatistics.setText("Estadisticas");
         itmStatistics.addActionListener(this::itmStatisticsActionPerformed);
-        jMenu10.add(itmStatistics);
+        menuReports.add(itmStatistics);
 
         itmReports.setText("Reportes");
         itmReports.addActionListener(this::itmReportsActionPerformed);
-        jMenu10.add(itmReports);
+        menuReports.add(itmReports);
 
-        jMenuBar1.add(jMenu10);
+        jMenuBar1.add(menuReports);
 
-        jMenu11.setText("Alertas");
+        menuAlerts.setText("Alertas");
 
         itmLowPerformance.setText("Detectar bajo rendimiento");
         itmLowPerformance.addActionListener(this::itmLowPerformanceActionPerformed);
-        jMenu11.add(itmLowPerformance);
+        menuAlerts.add(itmLowPerformance);
 
-        jMenuBar1.add(jMenu11);
+        jMenuBar1.add(menuAlerts);
 
-        jMenu5.setText("Ayuda");
+        menuHelp.setText("Ayuda");
 
         itmAbout.setText("Acerca de");
         itmAbout.addActionListener(this::itmAboutActionPerformed);
-        jMenu5.add(itmAbout);
+        menuHelp.add(itmAbout);
 
         itmGuide.setText("Guía");
         itmGuide.addActionListener(this::itmGuideActionPerformed);
-        jMenu5.add(itmGuide);
+        menuHelp.add(itmGuide);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -402,6 +402,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private void itmMyCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmMyCoursesActionPerformed
         FrmMyCourses frm = new FrmMyCourses();
         frm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_itmMyCoursesActionPerformed
 
     /**
@@ -428,12 +429,22 @@ public class FrmMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FrmMenu().setVisible(true));
     }
-    public JMenu getMenuManage(){
+
+    public JMenu getMenuManage() {
         return menuManage;
     }
+
     public JMenu getMenuActivities() {
         return menuActivities;
-}
+    }
+
+    public JMenu getMenuReports() {
+        return menuReports;
+    }
+
+    public JMenu getMenuAlerts() {
+        return menuAlerts;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itmAbout;
@@ -461,20 +472,20 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmUpdateStudent;
     private javax.swing.JMenuItem itmUpdateTeacher;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuActivities;
+    private javax.swing.JMenu menuAlerts;
     private javax.swing.JMenu menuCourses;
     private javax.swing.JMenu menuFiles;
+    private javax.swing.JMenu menuHelp;
     private javax.swing.JMenu menuManage;
+    private javax.swing.JMenu menuReports;
     // End of variables declaration//GEN-END:variables
 }

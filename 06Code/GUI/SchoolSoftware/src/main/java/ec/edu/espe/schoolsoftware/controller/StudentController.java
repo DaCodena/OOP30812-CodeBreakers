@@ -23,6 +23,7 @@ public class StudentController {
     }
 
     public StudentController() {
+        this.studentRepository = new StudentRepository();
     }
 
     public StudentRepository getStudentRepository() {

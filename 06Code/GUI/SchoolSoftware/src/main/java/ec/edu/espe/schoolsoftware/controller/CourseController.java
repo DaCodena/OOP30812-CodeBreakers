@@ -28,6 +28,7 @@ public class CourseController {
     }
 
     public CourseController() {
+        this.courseRepository = new CourseRepository();
     }
 
     public CourseRepository getCourseRepository() {

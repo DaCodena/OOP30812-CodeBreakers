@@ -30,6 +30,7 @@ public class TeacherController {
     }
 
     public TeacherController() {
+        this.teacherRepository = new TeacherRepository();
     }
 
     public boolean assignGrade(Grade grade) {

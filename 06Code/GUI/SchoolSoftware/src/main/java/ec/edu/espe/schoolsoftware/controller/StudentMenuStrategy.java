@@ -16,6 +16,8 @@ public class StudentMenuStrategy implements MenuStrategy {
     public void configureMenu(FrmMenu menu) {
         menu.getMenuManage().setVisible(false);
         menu.getMenuActivities().setVisible(false);
+        menu.getMenuAlerts().setVisible(false);
+        menu.getMenuReports().setVisible(false);
     }
     
 }

@@ -29,6 +29,7 @@ public class QuizController implements ICreate<Quiz> {
     }
     
     public QuizController() {
+        
     }
 
     @Override

@@ -23,6 +23,7 @@ public class EnrollmentController {
     }
 
     public EnrollmentController() {
+        this.enrollmentRepository = new EnrollmentRepository();
     }
 
     public boolean enrollStudent(String enrollmentId, String courseId, String studentId) {

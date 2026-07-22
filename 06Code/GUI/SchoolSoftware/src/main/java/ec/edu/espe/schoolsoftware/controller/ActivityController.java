@@ -28,6 +28,7 @@ public class ActivityController implements ICreate<Activity> {
     }
 
     public ActivityController() {
+        this.activityRepository = new ActivityRepository();
     }
 
     @Override
