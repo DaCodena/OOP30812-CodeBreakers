@@ -4,8 +4,15 @@
  */
 package ec.edu.espe.schoolsoftware.view;
 
+import ec.edu.espe.schoolsoftware.controller.CourseController;
+import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
+import ec.edu.espe.schoolsoftware.model.Course;
+import ec.edu.espe.schoolsoftware.model.Enrollment;
 import ec.edu.espe.schoolsoftware.model.Session;
 import ec.edu.espe.schoolsoftware.model.User;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +21,8 @@ import ec.edu.espe.schoolsoftware.model.User;
 public class FrmMyCourses extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMyCourses.class.getName());
+    EnrollmentController enrollmentController = new EnrollmentController();
+    CourseController courseController = new CourseController();
 
     User user = Session.getCurrentUser();
 
@@ -28,10 +37,48 @@ public class FrmMyCourses extends javax.swing.JFrame {
 
     private void loadCourses() {
 
-        User currentUser = Session.getCurrentUser();
+        ArrayList<Course> courses = getStudentCourses();
+        fillTable(courses);
 
-        String studentId = currentUser.getUsername();
+    }
 
+    private ArrayList<Course> getStudentCourses() {
+        String studentId = Session.getCurrentUser().getUsername();
+
+        ArrayList<Enrollment> enrollments = enrollmentController.getEnrollmentRepository().findByStudentId(studentId);
+
+        ArrayList<Course> courses = new ArrayList<>();
+
+        for (Enrollment enrollment : enrollments) {
+
+            String courseId = enrollment.getCourseId();
+            Course course = courseController.getCourseRepository().findById(courseId);
+
+            if (course != null) {
+                courses.add(course);
+            }
+        }
+
+        System.out.println(enrollments.size());
+
+        return courses;
+    }
+
+    private void fillTable(ArrayList<Course> courses) {
+
+        DefaultTableModel model = (DefaultTableModel) tblCourses.getModel();
+        model.setRowCount(0);
+
+        for (Course course : courses) {
+
+            Object[] row = {
+                course.getId(),
+                course.getName(),
+                course.getTeacherId()
+            };
+
+            model.addRow(row);
+        }
     }
 
     /**
@@ -44,12 +91,14 @@ public class FrmMyCourses extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCourses = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btnBackToMenu = new javax.swing.JButton();
+        btnOpenCourse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -60,9 +109,20 @@ public class FrmMyCourses extends javax.swing.JFrame {
                 "ID Curso", "Nombre", "Profesor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblCourses.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCoursesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblCourses);
 
         jLabel1.setText("Mis Cursos");
+
+        btnBackToMenu.setText("Volver al menú");
+        btnBackToMenu.addActionListener(this::btnBackToMenuActionPerformed);
+
+        btnOpenCourse.setText("Abrir curso");
+        btnOpenCourse.addActionListener(this::btnOpenCourseActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +137,12 @@ public class FrmMyCourses extends javax.swing.JFrame {
                         .addGap(361, 361, 361)
                         .addComponent(jLabel1)))
                 .addContainerGap(117, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(btnOpenCourse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBackToMenu)
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,12 +150,43 @@ public class FrmMyCourses extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBackToMenu)
+                    .addComponent(btnOpenCourse))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToMenuActionPerformed
+        FrmMenu frmMenu = new FrmMenu();
+        frmMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackToMenuActionPerformed
+
+    private void tblCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCoursesMouseClicked
+
+    }//GEN-LAST:event_tblCoursesMouseClicked
+
+    private void btnOpenCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenCourseActionPerformed
+        int row = tblCourses.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Selecciona un curso primero.");
+            return;
+        }
+
+        String courseId = tblCourses.getValueAt(row, 0).toString();
+        Course course = courseController.getCourseRepository().findById(courseId);
+
+        FrmCourseDetails frmCourseDetails = new FrmCourseDetails(course);
+
+        frmCourseDetails.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnOpenCourseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,8 +214,10 @@ public class FrmMyCourses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackToMenu;
+    private javax.swing.JButton btnOpenCourse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCourses;
     // End of variables declaration//GEN-END:variables
 }

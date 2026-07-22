@@ -51,4 +51,15 @@ public class MaterialController implements ICreate<Material> {
     public void setMaterialRepository(MaterialRepository materialRepository) {
         this.materialRepository = materialRepository;
     }
+    
+    public ArrayList<Material> findByCourseId(String courseId){
+        ArrayList<Material> materials = new ArrayList<>();
+        
+        MaterialRepository materialRepository = new MaterialRepository();
+        
+        materials = materialRepository.findByCourseId(courseId);
+        
+        return materials;
+    }
+
 }

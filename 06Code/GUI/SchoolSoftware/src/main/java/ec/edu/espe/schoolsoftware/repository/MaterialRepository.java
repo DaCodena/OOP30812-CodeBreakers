@@ -74,9 +74,26 @@ public class MaterialRepository extends BaseRepository implements ICrudOperation
             return null;
         }
 
+        return documentToObject(doc);
+    }
+
+    public ArrayList<Material> findByCourseId(String courseId) {
+        ArrayList<Material> materials = new ArrayList<>();
+
+        FindIterable<Document> documents = collection.find(Filters.eq("courseId", courseId));
+
+        for (Document document : documents) {
+            materials.add(documentToObject(document));
+        }
+
+        return materials;
+    }
+
+    private Material documentToObject(Document document) {
+
         return new Material(
-                doc.getString("_id"),
-                doc.getString("title"),
-                doc.getString("fileType"));
+                document.getString("_id"),
+                document.getString("title"),
+                document.getString("fileType"));
     }
 }
