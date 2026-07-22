@@ -7,7 +7,10 @@ package ec.edu.espe.schoolsoftware.view;
 import ec.edu.espe.schoolsoftware.controller.EnrollmentController;
 import ec.edu.espe.schoolsoftware.controller.GradeController;
 import ec.edu.espe.schoolsoftware.controller.LoginController;
+import ec.edu.espe.schoolsoftware.controller.MenuStrategy;
+import ec.edu.espe.schoolsoftware.controller.MenuStrategyFactory;
 import ec.edu.espe.schoolsoftware.model.Session;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,22 +27,11 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
 
-        String role = Session.getCurrentUser().getRole();
+        MenuStrategy strategy =
+            MenuStrategyFactory.create(
+                    Session.getCurrentUser());
 
-        switch (role) {
-
-            case "ADMIN":
-                break;
-
-            case "TEACHER":
-                menuManage.setVisible(false);
-                break;
-
-            case "STUDENT":
-                menuManage.setVisible(false);
-                menuActivities.setVisible(false);
-                break;
-        }
+    strategy.configureMenu(this);
     }
 
     /**
@@ -436,6 +428,12 @@ public class FrmMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FrmMenu().setVisible(true));
     }
+    public JMenu getMenuManage(){
+        return menuManage;
+    }
+    public JMenu getMenuActivities() {
+        return menuActivities;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itmAbout;

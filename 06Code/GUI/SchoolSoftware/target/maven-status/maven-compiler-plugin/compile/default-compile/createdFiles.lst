@@ -4,6 +4,7 @@ ec\edu\espe\schoolsoftware\controller\QuizController.class
 ec\edu\espe\schoolsoftware\view\FrmManageEnrollment.class
 ec\edu\espe\schoolsoftware\model\Session.class
 ec\edu\espe\schoolsoftware\view\FrmManageGrade$1.class
+ec\edu\espe\schoolsoftware\controller\StudentMenuStrategy.class
 ec\edu\espe\schoolsoftware\repository\GradeRepository.class
 ec\edu\espe\schoolsoftware\repository\StudentRepository.class
 ec\edu\espe\schoolsoftware\view\FrmLogin.class
@@ -19,11 +20,13 @@ ec\edu\espe\schoolsoftware\view\FrmManageTeacher$1.class
 ec\edu\espe\schoolsoftware\view\FrmManageCourse.class
 ec\edu\espe\schoolsoftware\view\FrmAddQuiz.class
 ec\edu\espe\schoolsoftware\view\FrmAddTeacher$1.class
+ec\edu\espe\schoolsoftware\controller\MenuStrategyFactory.class
 ec\edu\espe\schoolsoftware\view\FrmManageStudent.class
 ec\edu\espe\schoolsoftware\controller\CourseController.class
 ec\edu\espe\schoolsoftware\view\FrmAddCourse$1.class
 ec\edu\espe\schoolsoftware\model\Grade.class
 ec\edu\espe\schoolsoftware\repository\ICrudOperations.class
+ec\edu\espe\schoolsoftware\controller\AdminMenuStrategy.class
 ec\edu\espe\schoolsoftware\view\FrmManageEnrollment$1.class
 ec\edu\espe\schoolsoftware\repository\QuizRepository.class
 ec\edu\espe\schoolsoftware\controller\CrudOperations.class
@@ -54,6 +57,8 @@ ec\edu\espe\schoolsoftware\view\FrmMyCourses.class
 ec\edu\espe\schoolsoftware\model\Quiz.class
 ec\edu\espe\schoolsoftware\view\FrmManageActivity$1.class
 ec\edu\espe\schoolsoftware\utils\Configuration.class
+ec\edu\espe\schoolsoftware\controller\MenuStrategy.class
+ec\edu\espe\schoolsoftware\controller\TeacherMenuStrategy.class
 ec\edu\espe\schoolsoftware\view\FrmManageMaterial$1.class
 ec\edu\espe\schoolsoftware\model\AssessmentTool.class
 ec\edu\espe\schoolsoftware\view\FrmGuide.class
