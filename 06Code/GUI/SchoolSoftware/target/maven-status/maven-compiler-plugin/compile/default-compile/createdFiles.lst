@@ -67,7 +67,9 @@ ec\edu\espe\schoolsoftware\controller\UserController.class
 ec\edu\espe\schoolsoftware\view\FrmAddEnrollment.class
 ec\edu\espe\schoolsoftware\view\FrmManageQuiz$1.class
 ec\edu\espe\schoolsoftware\view\FrmStatistics.class
+ec\edu\espe\schoolsoftware\view\FrmCourseDetails.class
 ec\edu\espe\schoolsoftware\view\FrmAddStudent.class
 ec\edu\espe\schoolsoftware\view\FrmAddMaterial.class
+ec\edu\espe\schoolsoftware\view\FrmMyCourses$1.class
 ec\edu\espe\schoolsoftware\view\FrmAlerts.class
 ec\edu\espe\schoolsoftware\controller\MaterialController.class

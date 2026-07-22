@@ -77,11 +77,28 @@ public class GradeRepository extends BaseRepository implements ICrudOperations<G
             return null;
         }
 
+        return documentToObject(doc);
+    }
+
+    public ArrayList<Grade> findByCourseId(String courseId) {
+        ArrayList<Grade> grades = new ArrayList<>();
+
+        FindIterable<Document> documents = collection.find(Filters.eq("courseId", courseId));
+
+        for (Document document : documents) {
+            grades.add(documentToObject(document));
+        }
+
+        return grades;
+    }
+
+    private Grade documentToObject(Document document) {
+
         return new Grade(
-                doc.getString("_id"),
-                doc.getString("studentId"),
-                doc.getDouble("score"),
-                doc.getString("feedback"));
+                document.getString("_id"),
+                document.getString("studentId"),
+                document.getDouble("score"),
+                document.getString("feedback"));
     }
 
 }

@@ -16,11 +16,13 @@ import org.bson.Document;
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
 public class EnrollmentRepository extends BaseRepository implements ICrudOperations<Enrollment> {
+
     private final MongoCollection<Document> collection;
 
     public EnrollmentRepository() {
         collection = getCollection("enrollments");
     }
+
     @Override
     public void save(Enrollment enrollment) {
         Document document = new Document()
@@ -41,12 +43,7 @@ public class EnrollmentRepository extends BaseRepository implements ICrudOperati
 
         for (Document doc : documents) {
 
-            Enrollment enrollment
-                    = new Enrollment(
-                            doc.getString("_id"),
-                            doc.getString("courseId"),
-                            doc.getString("studentId"));
-
+            Enrollment enrollment = documentToObject(doc);
             enrollments.add(enrollment);
         }
 
@@ -73,19 +70,36 @@ public class EnrollmentRepository extends BaseRepository implements ICrudOperati
 
     @Override
     public Enrollment findById(String id) {
-        Document doc
-                = collection.find(
-                        Filters.eq("_id", id))
-                        .first();
+        Document document = collection.find(Filters.eq("_id", id)).first();
 
-        if (doc == null) {
+        if (document == null) {
             return null;
         }
 
+        return documentToObject(document);
+    }
+
+    public ArrayList<Enrollment> findByStudentId(String studentId) {
+        ArrayList<Enrollment> enrollments = new ArrayList<>();
+
+        FindIterable<Document> documents = collection.find(Filters.eq("studentId", studentId));
+
+        for (Document document : documents) {
+            enrollments.add(documentToObject(document));
+        }
+
+        return enrollments;
+    }
+
+    private Enrollment documentToObject(Document document) {
+
         return new Enrollment(
-                doc.getString("_id"),
-                doc.getString("courseId"),
-                doc.getString("studentId"));
+                document.getString("_id"),
+                document.getString("courseId"),
+                document.getString("studentId")
+        );
     }
     
+
+
 }

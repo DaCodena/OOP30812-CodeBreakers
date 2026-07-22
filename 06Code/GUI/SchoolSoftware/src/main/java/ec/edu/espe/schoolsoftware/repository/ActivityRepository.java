@@ -15,14 +15,14 @@ import org.bson.Document;
  *
  * @author Daniel Codena, CodeBreakers, @ESPE
  */
-public class ActivityRepository extends BaseRepository implements ICrudOperations<Activity>{
-   
+public class ActivityRepository extends BaseRepository implements ICrudOperations<Activity> {
+
     private final MongoCollection<Document> collection;
 
-    public ActivityRepository(){
+    public ActivityRepository() {
         collection = getCollection("activities");
     }
-    
+
     @Override
     public void save(Activity activity) {
         Document document = new Document()
@@ -41,9 +41,9 @@ public class ActivityRepository extends BaseRepository implements ICrudOperation
 
         for (Document doc : docs) {
             activities.add(new Activity(
-                            doc.getString("_id"),
-                            doc.getString("courseId"),
-                            doc.getString("title")));
+                    doc.getString("_id"),
+                    doc.getString("courseId"),
+                    doc.getString("title")));
         }
 
         return activities;
@@ -55,7 +55,7 @@ public class ActivityRepository extends BaseRepository implements ICrudOperation
                 new Document("courseId", activity.getCourseId())
                         .append("title", activity.getTitle()));
 
-        collection.updateOne(Filters.eq("_id",activity.getId()), update);
+        collection.updateOne(Filters.eq("_id", activity.getId()), update);
     }
 
     @Override
@@ -71,10 +71,27 @@ public class ActivityRepository extends BaseRepository implements ICrudOperation
             return null;
         }
 
-        return new Activity(
-                doc.getString("_id"),
-                doc.getString("courseId"),
-                doc.getString("title"));
+        return documentToObject(doc);
+    }
+
+    public ArrayList<Activity> findByCourseId(String courseId) {
+        ArrayList<Activity> activities = new ArrayList<>();
+
+        FindIterable<Document> documents = collection.find(Filters.eq("courseId", courseId));
+
+        for (Document document : documents) {
+            activities.add(documentToObject(document));
+        }
+
+        return activities;
     }
     
+    private Activity documentToObject(Document document){
+        
+        return new Activity(
+                document.getString("_id"),
+                document.getString("courseId"),
+                document.getString("title"));
+    }
+
 }
