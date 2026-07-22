@@ -1,0 +1,11 @@
+You can access to every function in the program with the admin credentials:
+-username: admin
+-password: admin
+You can access to student functions with student credentials, for example:
+-username: S011
+-password: 1234
+You can access to teacher functions with teacher credentials, for example:
+-username: T004
+-password: 1234
+
+You can access to other username and passwords in the collection "users"
