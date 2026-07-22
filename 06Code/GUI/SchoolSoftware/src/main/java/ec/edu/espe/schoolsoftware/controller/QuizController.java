@@ -18,7 +18,7 @@ import org.bson.Document;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class QuizController implements ICreate<Quiz> {
 
@@ -26,6 +26,9 @@ public class QuizController implements ICreate<Quiz> {
 
     public QuizController(ICrudOperations<Quiz> quizRepository) {
         this.quizRepository = quizRepository;
+    }
+    
+    public QuizController() {
     }
 
     @Override

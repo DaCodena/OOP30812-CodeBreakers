@@ -12,14 +12,17 @@ import org.bson.Document;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class EnrollmentController {
 
     private EnrollmentRepository enrollmentRepository;
 
+    public EnrollmentController(EnrollmentRepository enrollmentRepository) {
+        this.enrollmentRepository = enrollmentRepository;
+    }
+
     public EnrollmentController() {
-        enrollmentRepository = new EnrollmentRepository();
     }
 
     public boolean enrollStudent(String enrollmentId, String courseId, String studentId) {
@@ -66,5 +69,5 @@ public class EnrollmentController {
     public void setEnrollmentRepository(EnrollmentRepository enrollmentRepository) {
         this.enrollmentRepository = enrollmentRepository;
     }
-    
+
 }

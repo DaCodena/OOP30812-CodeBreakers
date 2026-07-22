@@ -8,8 +8,8 @@ import ec.edu.espe.schoolsoftware.model.Course;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public interface ICreate <T>{
+public interface ICreate<T> {
     T create(Course course);
 }

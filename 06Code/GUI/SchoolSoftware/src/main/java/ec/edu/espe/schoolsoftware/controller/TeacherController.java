@@ -19,18 +19,21 @@ import org.bson.Document;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class TeacherController {
 
     private TeacherRepository teacherRepository;
 
+    public TeacherController(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
+
     public TeacherController() {
-        teacherRepository = new TeacherRepository();
     }
 
     public boolean assignGrade(Grade grade) {
-        GradeRepository gradeRepository = new GradeRepository();
+        GradeRepository gradeRepository = new GradeRepository(); 
         gradeRepository.save(grade);
 
         return true;

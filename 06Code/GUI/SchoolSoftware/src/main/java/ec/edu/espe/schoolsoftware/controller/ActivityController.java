@@ -17,20 +17,24 @@ import ec.edu.espe.schoolsoftware.repository.ActivityRepository;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
-public class ActivityController implements ICreate<Activity>{
+public class ActivityController implements ICreate<Activity> {
+
     private ActivityRepository activityRepository;
 
-    public ActivityController() {
-        activityRepository = new ActivityRepository();
+    public ActivityController(ActivityRepository activityRepository) {
+        this.activityRepository = activityRepository;
     }
-    
+
+    public ActivityController() {
+    }
+
     @Override
     public Activity create(Course course) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     public ActivityRepository getActivityRepository() {
         return activityRepository;
     }
@@ -38,8 +42,4 @@ public class ActivityController implements ICreate<Activity>{
     public void setActivityRepository(ActivityRepository activityRepository) {
         this.activityRepository = activityRepository;
     }
-
-
-    
-    
 }
