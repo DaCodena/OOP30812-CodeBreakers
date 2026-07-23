@@ -4,17 +4,9 @@
  */
 package ec.edu.espe.schoolsoftware.controller;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import ec.edu.espe.schoolsoftware.model.Course;
 import ec.edu.espe.schoolsoftware.model.Quiz;
 import ec.edu.espe.schoolsoftware.repository.ICrudOperations;
-import ec.edu.espe.schoolsoftware.repository.QuizRepository;
-import ec.edu.espe.schoolsoftware.utils.MongoConnection;
-import java.util.ArrayList;
-import org.bson.Document;
 
 /**
  *
