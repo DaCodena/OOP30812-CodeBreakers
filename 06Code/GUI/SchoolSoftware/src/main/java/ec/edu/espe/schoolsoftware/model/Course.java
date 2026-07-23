@@ -6,7 +6,7 @@ package ec.edu.espe.schoolsoftware.model;
 
 /**
  *
- * @author Daniel Codena, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class Course {
     private String id;

@@ -6,7 +6,7 @@ package ec.edu.espe.schoolsoftware.model;
 
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class Activity extends AssessmentTool{
 

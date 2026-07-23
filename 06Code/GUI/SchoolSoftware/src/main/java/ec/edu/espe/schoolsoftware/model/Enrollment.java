@@ -4,15 +4,20 @@
  */
 package ec.edu.espe.schoolsoftware.model;
 
+import java.util.Objects;
+
 /**
  *
- * @author Odalys Chavez, CodeBreakers, @ESPE
+ * @author Esteban Basurto, CodeBreakers, @ESPE
  */
 public class Enrollment {
 
     private String id;
     private String courseId;
     private String studentId;
+    
+    public Enrollment() {
+    }
 
     public Enrollment(String id, String courseId, String studentId) {
         this.id = id;
@@ -24,19 +29,47 @@ public class Enrollment {
         return id;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getCourseId() {
+        return courseId;
     }
 
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 
+    public String getStudentId() {
+        return studentId;
+    }
+
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+    @Override
+    public String toString() {
+        return "Enrollment{" +
+                "id='" + id + '\'' +
+                ", courseId='" + courseId + '\'' +
+                ", studentId='" + studentId + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Enrollment that = (Enrollment) o;
+        return Objects.equals(id, that.id) &&
+               Objects.equals(courseId, that.courseId) &&
+               Objects.equals(studentId, that.studentId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, courseId, studentId);
     }
 }
