@@ -15,17 +15,19 @@ public class MenuStrategyFactory {
 
         switch (user.getRole()) {
 
-            case "ADMIN":
+            case "ADMIN" -> {
                 return new AdminMenuStrategy();
+            }
 
-            case "TEACHER":
+            case "TEACHER" -> {
                 return new TeacherMenuStrategy();
+            }
 
-            case "STUDENT":
+            case "STUDENT" -> {
                 return new StudentMenuStrategy();
+            }
 
-            default:
-                throw new IllegalArgumentException("Invalid role");
+            default -> throw new IllegalArgumentException("Invalid role");
 
         }
     }
